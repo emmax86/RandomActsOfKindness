@@ -8,7 +8,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World!'
 
-@app.route('/update-server')
+@app.route('/update-server', methods=['GET', 'POST'])
 def update():
     call(["git pull"], shell=True)
     return 'Success!'
