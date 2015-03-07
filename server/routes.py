@@ -70,3 +70,9 @@ def landing_page():
 def update():
     call(["git pull"], shell=True)
     return 'Success!'
+
+@app.route('/remake-database', methods=['GET', 'POST'])
+def remake():
+    call(["rm webapp.db"], shell=True)
+    db.create_all()
+    return 'Database Remade!'
