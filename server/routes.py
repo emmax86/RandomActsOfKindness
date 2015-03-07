@@ -41,9 +41,7 @@ def phone():
     seconds = request.json['call-time']
     user.add_phone_seconds(seconds)
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
-    db.session.add(d)
+    incClick()
 
     db.session.add(user)
     db.session.commit()
@@ -61,16 +59,19 @@ def msg_to():
         abort(401)
 
     user.increment_messages()
-    user.add_phone_number(request.json["phone_number"])
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
-    db.session.add(d)
+    incClick()
 
     db.session.add(user)
     db.session.commit()
 
     return "", 200
+
+@app.route('/clickcount', methods=['GET'])
+def clickCount():
+    d = Data.query.first()
+    i = d.getButtonClicks()
+    return jsonify(clickNum=i), 200
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
@@ -88,5 +89,11 @@ def update():
 @app.route('/remake-database', methods=['GET', 'POST'])
 def remake():
     call(["rm webapp.db"], shell=True)
-    db.create_all()
+    from db import resetdb
+    resetdb()
     return 'Database Remade!'
+
+def incClick():
+    d = Data.query.first()
+    d.incrementButtonClicks()
+    db.session.add(d)
