@@ -77,5 +77,6 @@ def update():
 
 @app.route('/remake-database', methods=['GET', 'POST'])
 def remake():
+    call(["rm webapp.db"], shell=True)
     db.create_all()
     return 'Database Remade!'
