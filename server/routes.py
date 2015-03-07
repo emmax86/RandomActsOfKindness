@@ -33,7 +33,21 @@ def phone():
 
     # Todo Steve will do this
 
-    return "", 201
+    return "", 200
+
+@app.route('/msg_to', methods=['POST'])
+def msg_to():
+    if not request.json or (not ('phone_number' in request.json)) or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    user = User.query.filter_by(id=request.json["id"]).first()
+
+    if not user: #Check database for id to make sure it exists
+        abort(401)
+
+    # Waiting on Steve's commit
+
+    return "", 200
 
 @app.route('/')
 def landing_page():
