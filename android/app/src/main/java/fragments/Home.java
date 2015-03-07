@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import me.dstny.activities.R;
 
 
-public class Home extends Fragment{
+public class Home extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstance) {
 

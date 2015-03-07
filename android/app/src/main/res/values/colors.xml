@@ -11,4 +11,6 @@
 
     <color name="darkblue">#3AA1BF</color>
 
+    <color name="transparent">#00000000</color>
+
 </resources>
