@@ -89,8 +89,8 @@ def update():
 @app.route('/remake-database', methods=['GET', 'POST'])
 def remake():
     call(["rm webapp.db"], shell=True)
-    from db import resetdb
-    resetdb()
+    from db import incClick
+    incClick()
     return 'Database Remade!'
 
 def incClick():
