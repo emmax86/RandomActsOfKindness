@@ -33,6 +33,12 @@
             android:name="activities.Settings"
             android:label="Main Activity" >
         </activity>
+
+        <activity
+            android:name="activities.ExitSplashScreen"
+            android:label="Main Activity" >
+        </activity>
+
         <activity
             android:name="activities.EmailAddresses"
             android:label="Main Activity" >

@@ -123,4 +123,11 @@ public class MainActivity extends Activity {
 
     }
 
+
+    public void onBackPressed() {
+        Intent intent = new Intent(MainActivity.this, ExitSplashScreen.class);
+        startActivity(intent);
+        finish();
+
+    }
 }
