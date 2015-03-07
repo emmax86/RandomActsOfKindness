@@ -1,3 +1,6 @@
+from subprocess import call
+call(["rm webapp.db"], shell=True)
+
 from __init__ import db
 
 db.create_all()
