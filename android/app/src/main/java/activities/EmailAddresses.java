@@ -16,13 +16,12 @@ public class EmailAddresses extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emails_setting);
-
     }
+
     public void emailBackButtonPressed(View view) {
         Intent intent = new Intent(EmailAddresses.this, Settings.class );
         startActivity(intent);
         finish();
-
     }
 
     public void emailAddPressed(View view) {
@@ -32,7 +31,7 @@ public class EmailAddresses extends Activity {
         alertDialog.setMessage("Enter an email of a good friend or family member.");
 
         final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         alertDialog.setView(input);
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Confirm",
                 new DialogInterface.OnClickListener() {
