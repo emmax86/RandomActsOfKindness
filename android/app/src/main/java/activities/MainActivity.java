@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -35,6 +36,11 @@ public class MainActivity extends Activity {
     private Button postButton;
     private Button donateButton;
     private Button mailButton;
+
+    private TextView callStats;
+    private TextView socialStats;
+    private TextView donateStats;
+    private TextView mailStats;
 
 
     @Override
@@ -111,6 +117,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, Settings.class);
         startActivity(intent);
         finish();
+    }
+
+    public void statButtonPressed(View view) {
+
     }
 
 }
