@@ -120,6 +120,24 @@ def clickData():
     mail = d.getMail()
     return jsonify(call=call,post=message,donate=donate,mail=mail), 200
 
+@app.route('/user_click_data', methods=['POST'])
+def user_click_data():
+
+    if not request.json or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    d = User.query.filter_by(id=request.json["id"]).first()
+    if not d:
+        abort(401)
+
+    id = d.getID()
+    donate = d.getDonate()
+    call = d.getCall()
+    message = d.getMessage()
+    mail = d.getMail()
+
+    return jsonify(id=id, call=call, post=message, donate=donate, mail=mail), 200
+
 @app.route('/get_data', methods=['GET'])
 def get_data():
     return json.dumps([user.serialize() for user in User.query.all()]), 200
