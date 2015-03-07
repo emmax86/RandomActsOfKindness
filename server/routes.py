@@ -13,11 +13,17 @@ def register():
         abort(400) # Malformed Packet
     guid = request.json['guid']
     user = User(guid)
+
+    alreadyCreatedUser = User.query.filter_by(id=user.id).first()
+
+    if alreadyCreatedUser:
+        abort(403) # User already created
+
     db.session.add(user)
     db.session.commit()
 
     registerObject = {
-    'id': user.guid
+    'id': user.id
     }
 
     return jsonify(registerObject), 201
