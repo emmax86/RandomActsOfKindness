@@ -10,9 +10,9 @@ def hello_world():
 
 @app.route('/update-server')
 def update():
-    call(["git pull origin master"], shell=True)
+    call(["git pull"], shell=True)
     return 'Success!'
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
