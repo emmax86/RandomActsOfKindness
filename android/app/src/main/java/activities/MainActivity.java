@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -105,5 +106,10 @@ public class MainActivity extends Activity {
         return randomNum;
 
 
+    public void settingsButtonPressed(View view) {
+        Intent intent = new Intent(MainActivity.this, Settings.class);
+        startActivity(intent);
+        finish();
     }
+    
 }
