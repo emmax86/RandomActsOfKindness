@@ -41,9 +41,7 @@ def phone():
     seconds = request.json['call-time']
     user.add_phone_seconds(seconds)
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
-    db.session.add(d)
+    incClick()
 
     db.session.add(user)
     db.session.commit()
@@ -72,7 +70,7 @@ def msg_to():
     return "", 200
 
 @app.route('/donate', methods=['POST'])
-def msg_to():
+def donate():
     if not request.json or (not ('donated' in request.json)) or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
@@ -83,8 +81,8 @@ def msg_to():
 
     user.add_donation(request.json['donated'])
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
+    d = Data.query.first()
+    d.incDonate()
     db.session.add(d)
 
     db.session.add(user)
@@ -104,14 +102,23 @@ def mail():
 
     user.increment_mail()
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
+    d = Data.query.first()
+    d.incMail()
     db.session.add(d)
 
     db.session.add(user)
     db.session.commit()
 
     return "", 200
+
+@app.route('/click_data', methods=['GET'])
+def clickData():
+    d = Data.query.first()
+    donate = d.getDonate()
+    call = d.getCall()
+    message = d.getMessage()
+    mail = d.getMail()
+    return jsonify(call=call,post=message,donate=donate,mail=mail), 200
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
@@ -129,5 +136,7 @@ def update():
 @app.route('/remake-database', methods=['GET', 'POST'])
 def remake():
     call(["rm webapp.db"], shell=True)
-    db.create_all()
+    from db import incClick
+    incClick()
     return 'Database Remade!'
+
