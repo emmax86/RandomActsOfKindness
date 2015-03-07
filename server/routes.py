@@ -1,6 +1,7 @@
 from __init__ import app, db
 from subprocess import call
 from models import User
+from datetime import timedelta
 
 from flask import request
 from flask import abort
@@ -31,9 +32,13 @@ def phone():
     if not user: #Check database for id to make sure it exists
         abort(401)
 
-    # Todo Steve will do this
+    seconds = request.json['call-time']
+    timedelta(seconds=seconds)
+    user.add_phone_minutes(seconds)
+    db.session.add(user)
+    db.session.commit()
 
-    return "", 201
+    return "", 200
 
 """
 """
