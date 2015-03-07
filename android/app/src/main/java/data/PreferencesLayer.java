@@ -48,6 +48,11 @@ public class PreferencesLayer {
         editor.apply();
     }
 
+    public void setKey(String id) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", id);
+    }
+
     public boolean getCallPref() {
         return sharedPreferences.getBoolean("call", true);
     }
@@ -62,6 +67,10 @@ public class PreferencesLayer {
 
     public boolean getMailPref() {
         return sharedPreferences.getBoolean("mail", true);
+    }
+
+    public String getKey(String key) {
+        return sharedPreferences.getString("id", "");
     }
 
 }
