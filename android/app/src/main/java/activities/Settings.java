@@ -18,6 +18,13 @@ public class Settings extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+    public void backButtonPressed(View view) {
+        Intent intent = new Intent(Settings.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    /*
     public void confirmButtonPressed(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);
         startActivity(intent);
@@ -29,4 +36,5 @@ public class Settings extends Activity {
         startActivity(intent);
         finish();
     }
+    */
 }

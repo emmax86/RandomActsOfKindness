@@ -51,6 +51,7 @@ public class PreferencesLayer {
     public void setKey(String id) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id", id);
+        editor.apply();
     }
 
     public boolean getCallPref() {
@@ -62,11 +63,11 @@ public class PreferencesLayer {
     }
 
     public boolean getDonatePref() {
-        return sharedPreferences.getBoolean("donate", true);
+        return sharedPreferences.getBoolean("donate", false);
     }
 
     public boolean getMailPref() {
-        return sharedPreferences.getBoolean("mail", true);
+        return sharedPreferences.getBoolean("mail", false);
     }
 
     public String getKey() {

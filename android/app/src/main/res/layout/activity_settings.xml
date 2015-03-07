@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/pink"
+        android:layout_alignParentTop="true"
+        android:id="@+id/call_list_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="FAMILY + FRIENDS"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/orange"
+        android:id="@+id/email_layout"
+        android:layout_below="@+id/call_list_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="EMAILS"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/lightblue"
+        android:id="@+id/donation_layout"
+        android:layout_below="@+id/email_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="DONATION AMOUNT"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/darkblue"
+        android:id="@+id/payment_layout"
+        android:layout_below="@+id/donation_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="PAYMENT OPTIONS"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <!--
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="75dp"
@@ -49,7 +123,14 @@
 
         </RelativeLayout>
 
-
     </LinearLayout>
+    -->
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/back"
+        android:onClick="backButtonPressed"/>
 
 </RelativeLayout>

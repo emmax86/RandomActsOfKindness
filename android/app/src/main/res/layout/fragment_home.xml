@@ -29,12 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ToggleButton
+            <Button
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:textOff=""
-                android:textOn=""
                 android:background="@drawable/call_selector"
                 android:id="@+id/call_button"
                 android:onClick="callButtonPressed"/>
@@ -46,12 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ToggleButton
+            <Button
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:textOff=""
-                android:textOn=""
                 android:background="@drawable/post_selector"
                 android:id="@+id/post_button"
                 android:onClick="postButtonPressed"/>
@@ -71,12 +67,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ToggleButton
+            <Button
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:textOff=""
-                android:textOn=""
                 android:background="@drawable/donate_selector"
                 android:id="@+id/donate_button"
                 android:onClick="donateButtonPressed"/>
@@ -88,12 +82,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ToggleButton
+            <Button
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:textOff=""
-                android:textOn=""
                 android:background="@drawable/mail_selector"
                 android:id="@+id/mail_button"
                 android:onClick="mailButtonPressed"/>

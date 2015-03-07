@@ -30,29 +30,17 @@ public class MainActivity extends Activity {
     private MainActivityPageAdapter mainActivityPageAdapter;
     private Home homeFragment;
 
+    private Button actButton;
     private Button callButton;
     private Button postButton;
     private Button donateButton;
     private Button mailButton;
-    private Button kindnessButton;
-    private String[] listOfButtonText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        listOfButtonText=new String[] {"Send Some Kindness", "Make Someone's Day,","Spread Happiness"};
-
-
-
-        kindnessButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         homeFragment = new Home();
         fragments = new ArrayList<Fragment>();
@@ -78,12 +66,15 @@ public class MainActivity extends Activity {
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
 
-        callButton = (Button) findViewById(R.id.call_button);
-        postButton = (Button) findViewById(R.id.post_button);
-        donateButton = (Button) findViewById(R.id.donate_button);
-        mailButton = (Button) findViewById(R.id.mail_button);
+    public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
 
+        actButton = act;
+        callButton = call;
+        postButton = post;
+        donateButton = donate;
+        mailButton = mail;
 
         PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
         callButton.setActivated(preferencesLayer.getCallPref());
@@ -93,31 +84,24 @@ public class MainActivity extends Activity {
     }
 
     public void callButtonPressed(View view) {
+        callButton.setActivated(!callButton.isActivated());
         PreferencesLayer.getInstance().setCallPref(callButton.isActivated());
     }
 
     public void postButtonPressed(View view) {
+        postButton.setActivated(!postButton.isActivated());
         PreferencesLayer.getInstance().setPostPref(postButton.isActivated());
     }
 
     public void donateButtonPressed(View view) {
+        donateButton.setActivated(!donateButton.isActivated());
         PreferencesLayer.getInstance().setPostPref(donateButton.isActivated());
     }
 
     public void mailButtonPressed(View view) {
+        mailButton.setActivated(!mailButton.isActivated());
         PreferencesLayer.getInstance().setMailPref(mailButton.isActivated());
     }
-
-    public int randomInt() {
-
-        int min = 0;
-        int max = listOfButtonText.length - 1;
-        Random random = new Random();
-        int randomNum = random.nextInt(((max - min) + 1) + min);
-
-        return randomNum;
-    }
-
 
     public void settingsButtonPressed(View view) {
         Intent intent = new Intent(MainActivity.this, Settings.class);
