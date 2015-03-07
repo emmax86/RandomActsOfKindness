@@ -51,14 +51,14 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/transparent"
-            android:onClick="done"
+            android:onClick="donationOptionsPressed"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="DONATION AMOUNT"
+            android:text="DONATION OPTIONS"
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>
@@ -138,6 +138,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:background="@mipmap/back"
-        android:onClick="backButtonPressed"/>
+        android:onClick="settingsBackButtonPressed"/>
 
 </RelativeLayout>

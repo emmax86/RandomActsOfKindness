@@ -9,7 +9,7 @@ import android.widget.TextView;
 import me.dstny.activities.R;
 
 
-public class donateSetting extends Activity {
+public class DonateSettings extends Activity {
 
     private TextView donateAmount;
 
@@ -25,7 +25,7 @@ public class donateSetting extends Activity {
     }
 
     public void donateBackButtonPressed(View view) {
-        Intent intent = new Intent(donateSetting.this, Settings.class );
+        Intent intent = new Intent(DonateSettings.this, Settings.class );
         startActivity(intent);
         finish();
 

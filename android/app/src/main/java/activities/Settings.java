@@ -18,13 +18,13 @@ public class Settings extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    public void backButtonPressed(View view) {
+    public void settingsBackButtonPressed(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-    public void donateAmountButtonPressed(View view) {
-        Intent intent = new Intent(Settings.this, donateSetting.class );
+    public void donationOptionsPressed(View view) {
+        Intent intent = new Intent(Settings.this, DonateSettings.class );
         startActivity(intent);
         finish();
     }
