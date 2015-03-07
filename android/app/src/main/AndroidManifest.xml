@@ -24,6 +24,12 @@
         </activity>
 
         <activity
+            android:name="activities.PhoneNumbers"
+            android:label="Main Activity" >
+        </activity>
+
+
+        <activity
             android:name="activities.Settings"
             android:label="Main Activity" >
         </activity>

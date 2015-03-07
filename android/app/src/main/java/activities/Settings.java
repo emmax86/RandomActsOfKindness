@@ -23,6 +23,16 @@ public class Settings extends Activity {
         startActivity(intent);
         finish();
     }
+    public void familyAndFriendsPressed(View view) {
+        Intent intent = new Intent(Settings.this,PhoneNumbers.class);
+        startActivity(intent);
+        finish();
+    }
+    public void emailsPressed(View view) {
+        Intent intent = new Intent(Settings.this,EmailAddresses.class);
+        startActivity(intent);
+        finish();
+    }
     public void donationOptionsPressed(View view) {
         Intent intent = new Intent(Settings.this, DonateSettings.class );
         startActivity(intent);
