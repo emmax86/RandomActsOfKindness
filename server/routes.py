@@ -70,7 +70,7 @@ def msg_to():
     return "", 200
 
 @app.route('/donate', methods=['POST'])
-def msg_to():
+def donate():
     if not request.json or (not ('donated' in request.json)) or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
@@ -81,8 +81,8 @@ def msg_to():
 
     user.add_donation(request.json['donated'])
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
+    d = Data.query.first()
+    d.incDonate()
     db.session.add(d)
 
     db.session.add(user)
@@ -102,18 +102,23 @@ def mail():
 
     user.increment_mail()
 
-    incClick()
+    d = Data.query.first()
+    d.incMail()
+    db.session.add(d)
 
     db.session.add(user)
     db.session.commit()
 
     return "", 200
 
-@app.route('/clickcount', methods=['GET'])
-def clickCount():
+@app.route('/click_data', methods=['GET'])
+def clickData():
     d = Data.query.first()
-    i = d.getButtonClicks()
-    return jsonify(clickNum=i), 200
+    donate = d.getDonate()
+    call = d.getCall()
+    message = d.getMessage()
+    mail = d.getMail()
+    return jsonify(call=call,post=message,donate=donate,mail=mail), 200
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
@@ -135,7 +140,3 @@ def remake():
     incClick()
     return 'Database Remade!'
 
-def incClick():
-    d = Data.query.first()
-    d.incrementButtonClicks()
-    db.session.add(d)

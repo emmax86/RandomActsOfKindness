@@ -41,13 +41,35 @@ class User(db.Model):
 
 
 class Data(db.Model):
-    buttonClicks = db.Column(db.Integer, primary_key=True)
+    donate = db.Column(db.Integer, primary_key=True)
+    call = db.Column(db.Integer)
+    message = db.Column(db.Integer)
+    mail = db.Column(db.Integer)
 
-    def __init__(self, globalButtonClicks):
-        self.buttonClicks = globalButtonClicks
 
-    def incrementButtonClicks(self):
-        self.buttonClicks += 1
+    def __init__(self):
+        self.donate = 0
+        self.call = 0
+        self.message = 0
+        self.mail = 0
 
-    def getButtonClicks(self):
-        return self.buttonClicks
+
+    def incDonate(self):
+        self.donate += 1
+    def getDonate(self):
+        return self.donate
+
+    def incCall(self):
+        self.call += 1
+    def getCall(self):
+        return self.call
+
+    def incMessage(self):
+        self.message += 1
+    def getMessage(self):
+        return self.message
+
+    def incMail(self):
+        self.mail += 1
+    def getMail(self):
+        return self.mail
