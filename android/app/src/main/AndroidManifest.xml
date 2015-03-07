@@ -22,6 +22,11 @@
             android:name="activities.MainActivity"
             android:label="Main Activity" >
         </activity>
+
+        <activity
+            android:name="activities.Settings"
+            android:label="Main Activity" >
+        </activity>
     </application>
 
 </manifest>
