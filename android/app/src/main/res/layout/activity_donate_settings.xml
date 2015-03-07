@@ -108,12 +108,18 @@
 
     </RelativeLayout>
 
-    <Button
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@mipmap/back"
-        android:onClick="donateBackButtonPressed"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/back"
+            android:onClick="donateBackButtonPressed"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
