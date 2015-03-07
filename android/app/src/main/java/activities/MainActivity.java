@@ -83,6 +83,10 @@ public class MainActivity extends Activity {
         mailButton.setActivated(preferencesLayer.getMailPref());
     }
 
+    public void kindnessButtonPressed(View view) {
+
+    }
+
     public void callButtonPressed(View view) {
         callButton.setActivated(!callButton.isActivated());
         PreferencesLayer.getInstance().setCallPref(callButton.isActivated());
@@ -95,7 +99,7 @@ public class MainActivity extends Activity {
 
     public void donateButtonPressed(View view) {
         donateButton.setActivated(!donateButton.isActivated());
-        PreferencesLayer.getInstance().setPostPref(donateButton.isActivated());
+        PreferencesLayer.getInstance().setDonatePref(donateButton.isActivated());
     }
 
     public void mailButtonPressed(View view) {
