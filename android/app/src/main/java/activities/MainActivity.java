@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import adapters.MainActivityPageAdapter;
 import fragments.Home;
@@ -31,11 +32,25 @@ public class MainActivity extends Activity {
     private Button postButton;
     private Button donateButton;
     private Button mailButton;
+    private Button kindnessButton;
+    private String[] listOfButtonText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listOfButtonText=new String[] {"Send Some Kindness", "Make Someone's Day,","Spread Happiness"};
+
+
+
+        kindnessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         homeFragment = new Home();
         fragments = new ArrayList<Fragment>();
@@ -78,5 +93,17 @@ public class MainActivity extends Activity {
     }
 
     public void mailButtonPressed(View view) {
+    }
+
+    public int randomInt(){
+
+        int min=0;
+        int max=listOfButtonText.length-1;
+        Random random=new Random();
+        int randomNum=random.nextInt(((max - min) + 1) + min);
+
+        return randomNum;
+
+
     }
 }
