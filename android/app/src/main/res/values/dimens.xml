@@ -1,4 +1,10 @@
 <resources>
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="activity_vertical_margin">0dp</dimen>
+
+    <!-- fake actionbar dimensions-->
+    <dimen name="action_bar_text_size">16sp</dimen>
+    <dimen name="up_button_side_lengths">16dp</dimen>
+    <dimen name="up_button_width">75dp</dimen>
+    <dimen name="up_button_padding">6dp</dimen>
 </resources>

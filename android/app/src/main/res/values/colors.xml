@@ -2,15 +2,10 @@
 <resources>
 
     <color name="pink">#F2385A</color>
-
     <color name="orange">#F5a503</color>
-
     <color name="offwhite">#E9F1DF</color>
-
     <color name="lightblue">#56D9CD</color>
-
     <color name="darkblue">#3AA1BF</color>
-
     <color name="transparent">#00000000</color>
 
 </resources>
