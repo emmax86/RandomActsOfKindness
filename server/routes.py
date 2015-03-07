@@ -40,12 +40,9 @@ def phone():
 
     return "", 200
 
-"""
-"""
-
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def landing_page():
+    return 'Nothing seems to be here'
 
 @app.route('/update-server', methods=['GET', 'POST'])
 def update():
