@@ -83,6 +83,13 @@ public class MainActivity extends Activity {
         postButton = (Button) findViewById(R.id.post_button);
         donateButton = (Button) findViewById(R.id.donate_button);
         mailButton = (Button) findViewById(R.id.mail_button);
+
+
+        PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
+        callButton.setActivated(preferencesLayer.getCallPref());
+        postButton.setActivated(preferencesLayer.getPostPref());
+        donateButton.setActivated(preferencesLayer.getDonatePref());
+        mailButton.setActivated(preferencesLayer.getMailPref());
     }
 
     public void callButtonPressed(View view) {
