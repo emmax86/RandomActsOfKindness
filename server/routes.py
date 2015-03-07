@@ -1,6 +1,6 @@
 from __init__ import app, db
 from subprocess import call
-from models import User
+from models import User, Data
 
 from flask import request
 from flask import abort
@@ -40,6 +40,11 @@ def phone():
 
     seconds = request.json['call-time']
     user.add_phone_seconds(seconds)
+
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
+
     db.session.add(user)
     db.session.commit()
 
@@ -57,6 +62,11 @@ def msg_to():
 
     user.increment_messages()
     user.add_phone_number(request.json["phone_number"])
+
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
+
     db.session.add(user)
     db.session.commit()
 

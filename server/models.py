@@ -33,3 +33,16 @@ class User(db.Model):
             'messages': self.messages,
             'phone_seconds': self.phone_seconds
         }
+
+
+class Data(db.Model):
+    buttonClicks = db.Column(db.Integer, primary_key=True)
+
+    def __init__(self, globalButtonClicks):
+        self.buttonClicks = globalButtonClicks
+
+    def incrementButtonClicks(self):
+        self.buttonClicks += 1
+
+    def getButtonClicks(self):
+        return self.buttonClicks
