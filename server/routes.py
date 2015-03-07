@@ -33,8 +33,7 @@ def phone():
         abort(401)
 
     seconds = request.json['call-time']
-    timedelta(seconds=seconds)
-    user.add_phone_minutes(seconds)
+    user.add_phone_seconds(seconds)
     db.session.add(user)
     db.session.commit()
 
