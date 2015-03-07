@@ -1,7 +1,5 @@
-from flask import Flask
+from __init__ import app
 from subprocess import call
-
-app = Flask(__name__)
 
 """
 """
@@ -43,11 +41,3 @@ def hello_world():
 def update():
     call(["git pull"], shell=True)
     return 'Success!'
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
-
-    """
-    host='0.0.0.0', port=80, debug=True
-    """
