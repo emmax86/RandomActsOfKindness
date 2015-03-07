@@ -32,6 +32,29 @@ def create_object():
     objects.append(someobject)
     return jsonify({'object': someobject}), 201
 
+@app.route('/register', methods=['POST'])
+def register():
+    if not request.json or not 'guid' in request.json:
+        abort(400) # Malformed Packet
+
+    hashedGUID = hashGUID(request.json['guid']);
+
+    registerObject = {
+    'id': hashedGUID
+    }
+
+    # Do something with registerObject here
+
+    return jsonify(registerObject), 201
+
+import hashlib
+
+def hashGUID(guid):
+    hash = hashlib.sha256()
+    hash.update(guid)
+    hash.update("chips")
+    return hash.hexdigest()
+
 """
 """
 
