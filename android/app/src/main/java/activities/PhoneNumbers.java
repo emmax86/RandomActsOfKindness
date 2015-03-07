@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import me.dstny.activities.R;
+import util.Util;
 
 
 public class PhoneNumbers extends Activity {
@@ -41,6 +43,13 @@ public class PhoneNumbers extends Activity {
                                         int whichButton) {
                         // code that checks to see if the email is valid or used by another account
                         // if it passes checks make it the new email and close alert dialog
+                        String phoneNumber = input.getText().toString();
+                        if (Util.emails.contains(phoneNumber)) {
+                            Toast.makeText(PhoneNumbers.this, "Already added phone number", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Util.emails.add(phoneNumber);
+                        }
 
                     }
 

@@ -6,9 +6,13 @@ class User(db.Model):
     id = db.Column(db.String(64), primary_key=True)
     guid = db.Column(db.String(36))
     donated = db.Column(db.Integer)
-    messages = db.Column(db.Integer)
     phone_seconds = db.Column(db.Integer)
+
+    messages = db.Column(db.Integer)
     mail = db.Column(db.Integer)
+
+    donatedTimes = db.Column(db.Integer)
+    phoneTimes = db.Column(db.Integer)
 
     def __init__(self, guid):
         self.guid = guid
@@ -17,6 +21,31 @@ class User(db.Model):
         self.messages = 0
         self.phone_seconds = 0
         self.mail = 0
+        self.donatedTimes = 0
+        self.phoneTimes = 0
+
+    def incDonate(self):
+        self.donated += 1
+    def getDonate(self):
+        return self.donated
+
+    def incCall(self):
+        self.phoneTimes += 1
+    def getCall(self):
+        return self.phoneTimes
+
+    def incMessage(self):
+        self.messages += 1
+    def getMessage(self):
+        return self.messages
+
+    def incMail(self):
+        self.mail += 1
+    def getMail(self):
+        return self.mail
+
+    def getID(self):
+        return self.id;
 
     def increment_messages(self):
         self.messages += 1

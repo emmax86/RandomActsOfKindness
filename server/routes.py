@@ -41,10 +41,13 @@ def phone():
     seconds = request.json['call-time']
     user.add_phone_seconds(seconds)
 
-    incClick()
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
 
-    db.session.add(user)
-    db.session.commit()
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incCall()
+    db.session.add(a)
 
     return "", 200
 
@@ -63,6 +66,10 @@ def msg_to():
     d = Data.query.all().first()
     d.incrementButtonClicks()
     db.session.add(d)
+
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incMessage()
+    db.session.add(a)
 
     db.session.add(user)
     db.session.commit()
@@ -85,6 +92,10 @@ def donate():
     d.incDonate()
     db.session.add(d)
 
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incDonate()
+    db.session.add(a)
+
     db.session.add(user)
     db.session.commit()
 
@@ -106,6 +117,10 @@ def mail():
     d.incMail()
     db.session.add(d)
 
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incMail()
+    db.session.add(a)
+
     db.session.add(user)
     db.session.commit()
 
@@ -119,6 +134,24 @@ def clickData():
     message = d.getMessage()
     mail = d.getMail()
     return jsonify(call=call,post=message,donate=donate,mail=mail), 200
+
+@app.route('/user_click_data', methods=['POST'])
+def user_click_data():
+
+    if not request.json or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    d = User.query.filter_by(id=request.json["id"]).first()
+    if not d:
+        abort(401)
+
+    id = d.getID()
+    donate = d.getDonate()
+    call = d.getCall()
+    message = d.getMessage()
+    mail = d.getMail()
+
+    return jsonify(id=id, call=call, post=message, donate=donate, mail=mail), 200
 
 @app.route('/get_data', methods=['GET'])
 def get_data():

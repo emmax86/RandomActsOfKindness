@@ -10,6 +10,7 @@ import android.os.Handler;
 
 import data.PreferencesLayer;
 import me.dstny.activities.R;
+import util.Util;
 
 public class SplashScreen extends Activity {
 
@@ -35,6 +36,8 @@ public class SplashScreen extends Activity {
         if (id.equals("")) {
             id = "burgle";
             PreferencesLayer.getInstance().setKey(id);
+            Util.phoneNumbers = PreferencesLayer.getInstance().getPhoneNumbers();
+            Util.emails = PreferencesLayer.getInstance().getEmails();
         }
     }
 

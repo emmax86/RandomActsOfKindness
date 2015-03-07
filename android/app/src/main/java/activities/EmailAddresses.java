@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import me.dstny.activities.R;
+import util.Util;
 
 public class EmailAddresses extends Activity {
 
@@ -39,6 +43,13 @@ public class EmailAddresses extends Activity {
                                         int whichButton) {
                         // code that checks to see if the email is valid or used by another account
                         // if it passes checks make it the new email and close alert dialog
+                        String email = input.getText().toString();
+                        if (Util.emails.contains(email)) {
+                            Toast.makeText(EmailAddresses.this, "Already added email", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Util.emails.add(email);
+                        }
 
                     }
 
