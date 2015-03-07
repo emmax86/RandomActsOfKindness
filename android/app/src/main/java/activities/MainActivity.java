@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import adapters.MainActivityPageAdapter;
+import data.PreferencesLayer;
 import fragments.Home;
 import me.dstny.activities.R;
 
@@ -70,15 +71,19 @@ public class MainActivity extends Activity {
     }
 
     public void callButtonPressed(View view) {
+        PreferencesLayer.getInstance().setCallPref(callButton.isActivated());
     }
 
     public void postButtonPressed(View view) {
+        PreferencesLayer.getInstance().setPostPref(postButton.isActivated());
     }
 
     public void donateButtonPressed(View view) {
+        PreferencesLayer.getInstance().setPostPref(donateButton.isActivated());
     }
 
     public void mailButtonPressed(View view) {
+        PreferencesLayer.getInstance().setMailPref(mailButton.isActivated());
     }
 
     public void settingsButtonPressed(View view) {
