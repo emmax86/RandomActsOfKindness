@@ -10,7 +10,7 @@ def hello_world():
 
 @app.route('/update-server')
 def update():
-    call(["git pull origin master"])
+    call(["git pull origin master"], shell=True)
     return 'Success!'
 
 
