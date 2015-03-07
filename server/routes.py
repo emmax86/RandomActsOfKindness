@@ -61,7 +61,48 @@ def msg_to():
         abort(401)
 
     user.increment_messages()
-    user.add_phone_number(request.json["phone_number"])
+
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
+
+    db.session.add(user)
+    db.session.commit()
+
+    return "", 200
+
+@app.route('/donate', methods=['POST'])
+def msg_to():
+    if not request.json or (not ('donated' in request.json)) or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    user = User.query.filter_by(id=request.json["id"]).first()
+
+    if not user: #Check database for id to make sure it exists
+        abort(401)
+
+    user.add_donation(request.json['donated'])
+
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
+
+    db.session.add(user)
+    db.session.commit()
+
+    return "", 200
+
+@app.route("/mail", methods=['POST'])
+def mail():
+    if not request.json or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    user = User.query.filter_by(id=request.json["id"]).first()
+
+    if not user: #Check database for id to make sure it exists
+        abort(401)
+
+    user.increment_mail()
 
     d = Data.query.all().first()
     d.incrementButtonClicks()

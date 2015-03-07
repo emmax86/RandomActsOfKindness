@@ -8,6 +8,7 @@ class User(db.Model):
     donated = db.Column(db.Integer)
     messages = db.Column(db.Integer)
     phone_seconds = db.Column(db.Integer)
+    mail = db.Column(db.Integer)
 
     def __init__(self, guid):
         self.guid = guid
@@ -15,8 +16,12 @@ class User(db.Model):
         self.donated = 0
         self.messages = 0
         self.phone_seconds = 0
+        self.mail = 0
 
     def increment_messages(self):
+        self.messages += 1
+
+    def increment_mail(self):
         self.messages += 1
 
     def add_donation(self, amount):
