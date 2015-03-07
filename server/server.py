@@ -11,6 +11,7 @@ def hello_world():
 @app.route('/update-server')
 def update():
     call(["git pull origin master"])
+    return 'Success!'
 
 
 if __name__ == '__main__':
