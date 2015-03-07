@@ -50,7 +50,9 @@ def msg_to():
     if not user: #Check database for id to make sure it exists
         abort(401)
 
-    # Waiting on Steve's commit
+    user.increment_messages()
+    db.session.add(user)
+    db.session.commit()
 
     return "", 200
 
