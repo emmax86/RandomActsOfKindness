@@ -42,10 +42,10 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingTop="25dp"
-        android:paddingBottom="25dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -55,7 +55,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:background="@drawable/rak_icon"/>
 
     </RelativeLayout>
 
