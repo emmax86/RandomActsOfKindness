@@ -12,11 +12,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/add_phone_number_button"
             android:text="PHONE NUMBERS"
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>
+
+        <layout.SquareRelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/add_phone_number_button">
+
+            <Button
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/add_orange"
+                android:onClick="phoneNumberAddPressed"/>
+
+        </layout.SquareRelativeLayout>
 
 
     </RelativeLayout>
@@ -32,20 +48,29 @@
         android:divider="#CCCCCC"
         android:dividerHeight="1dp"
         android:paddingLeft="2dp"
-        android:layout_above="@+id/backButton"
+        android:layout_above="@+id/back_button_container"
         android:layout_below="@+id/phoneNumberTitle">
     </ListView>
 
-
-
-    <Button
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:background="@mipmap/back"
-        android:id="@+id/backButton"
-        android:onClick="phoneNumbersBackButtonPressed"/>
+        android:id="@+id/back_button_container">
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/darkblue"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/back"
+            android:id="@+id/phone_back_button"
+            android:onClick="phoneNumbersBackButtonPressed"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

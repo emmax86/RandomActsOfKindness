@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="20dp">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -108,12 +107,18 @@
 
     </RelativeLayout>
 
-    <Button
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@mipmap/back"
-        android:onClick="donateBackButtonPressed"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/back"
+            android:onClick="donateBackButtonPressed"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
