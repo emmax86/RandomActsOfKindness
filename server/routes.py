@@ -51,6 +51,7 @@ def msg_to():
         abort(401)
 
     user.increment_messages()
+    user.add_phone_number(request.json["phone_number"])
     db.session.add(user)
     db.session.commit()
 

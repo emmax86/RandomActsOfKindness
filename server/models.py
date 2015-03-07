@@ -8,6 +8,7 @@ class User(db.Model):
     donated = db.Column(db.Integer)
     messages = db.Column(db.Integer)
     phone_minutes = db.Column(db.DateTime)
+    phone_numbers = db.Column(db.PickleType)
 
     def __init__(self, guid):
         self.guid = guid
@@ -24,3 +25,6 @@ class User(db.Model):
 
     def add_phone_minutes(self, amount):
         self.phone_minutes += amount
+
+    def add_phone_number(self, phone_number):
+        self.phone_numbers.extend([phone_number])
