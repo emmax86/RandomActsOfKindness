@@ -24,6 +24,12 @@ public class PreferencesLayer {
         }
     }
 
+    public void setDonationAmountPref(double amount) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("donationAmount", Double.doubleToLongBits(amount));
+        editor.apply();
+    }
+
     public void setCallPref(boolean flag) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("call", flag);
@@ -52,6 +58,10 @@ public class PreferencesLayer {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id", id);
         editor.apply();
+    }
+
+    public double getDonationAmountPref() {
+        return Double.longBitsToDouble(sharedPreferences.getLong("donationAmount", Double.doubleToLongBits(1)));
     }
 
     public boolean getCallPref() {

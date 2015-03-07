@@ -16,17 +16,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="DONATION AMOUNT"
+            android:text="DONATION AMOUNT:"
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:background="@color/offwhite"
+        android:background="@color/orange"
         android:layout_below="@+id/donation_amount"
         android:id="@+id/current_num">
 
@@ -35,36 +35,58 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="$5.67"
-            android:textColor="@color/orange"
+            android:text="5.67"
+            android:textColor="@color/offwhite"
             android:textSize="40sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="$"
+            android:textColor="@color/offwhite"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/current_donation_number"/>
+
     </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:background="@color/lightblue"
-            android:layout_below="@+id/current_num"
-            android:id="@+id/donation_input">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/lightblue"
+        android:layout_below="@+id/current_num"
+        android:id="@+id/donation_input">
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/offwhite"
+            android:hint="5.67"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="40sp"
+            android:inputType="numberDecimal"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_white"
+            android:layout_centerInParent="true"
+            android:textColor="@color/offwhite"/>
 
+    </RelativeLayout>
 
-        </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:background="@color/darkblue"
-        android:layout_below="@+id/donation_input"
-        >
+        android:layout_below="@+id/donation_input">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="CHANGE AMOUNT"
+            android:text="CONFIRM"
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>
