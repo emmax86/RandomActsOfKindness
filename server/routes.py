@@ -6,6 +6,7 @@ from datetime import timedelta
 from flask import request
 from flask import abort
 from flask import jsonify
+from flask import json
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -61,6 +62,10 @@ def msg_to():
     db.session.commit()
 
     return "", 200
+
+@app.route('/get_data', methods=['GET'])
+def get_data():
+    return json.dumps([user.serialize() for user in User.query.all()]), 200
 
 @app.route('/')
 def landing_page():

@@ -14,7 +14,7 @@ class User(db.Model):
         self.id = sha256(guid).hexdigest()
         self.donated = 0
         self.messages = 0
-        self.phone_minutes = 0
+        self.phone_seconds = 0
 
     def increment_messages(self):
         self.messages += 1
@@ -24,3 +24,12 @@ class User(db.Model):
 
     def add_phone_seconds(self, amount):
         self.phone_seconds += amount
+
+    def serialize(self):
+        return {
+            'guid': self.guid,
+            'id': self.id,
+            'donated': self.donated,
+            'messages': self.messages,
+            'phone_seconds': self.phone_seconds
+        }
