@@ -20,7 +20,7 @@ public class ConnectionHandler {
     private static final String phoneURL = baseURL + "phone";
     private static final String msgURL = baseURL + "msg_to";
     private static final String donateURL = baseURL + "donate";
-    private static final String cardURL = baseURL + "card";
+    private static final String mailURL = baseURL + "mail";
 
     private static HttpURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
         int count = 0;
@@ -87,7 +87,7 @@ public class ConnectionHandler {
         }
     }
 
-    public static String incrementMinutes(String id, int seconds) throws IOException, JSONException {
+    public static String addMinutes(String id, int seconds) throws IOException, JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", id);
         jsonObject.put("call-time", seconds);
@@ -102,6 +102,23 @@ public class ConnectionHandler {
         jsonObject.put("id", id);
 
         HttpURLConnection connection = buildPostRequest(msgURL, jsonObject.toString());
+        return buildResponse(connection);
+    }
+
+    public static String addDonation(String id, int amount) throws IOException, JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("donated", amount);
+
+        HttpURLConnection connection = buildPostRequest(donateURL, jsonObject.toString());
+        return buildResponse(connection);
+    }
+
+    public static String incrementCard(String id) throws IOException, JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+
+        HttpURLConnection connection = buildPostRequest(mailURL, jsonObject.toString());
         return buildResponse(connection);
     }
 

@@ -2,6 +2,8 @@ package data;
 
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+
 public class PreferencesLayer {
 
     private static PreferencesLayer instance;
@@ -60,6 +62,26 @@ public class PreferencesLayer {
         editor.apply();
     }
 
+    public void setPhoneNumbers(ArrayList<String> phoneNumbers) {
+        int size = phoneNumbers.size();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("phoneNumbersCount", size);
+        for (int i = 0; i < size; i++) {
+            editor.putString("phoneNumber" + i, phoneNumbers.get(i));
+        }
+        editor.apply();
+    }
+
+    public void setEmails(ArrayList<String> emails) {
+        int size = emails.size();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("emailsCount", size);
+        for (int i = 0; i < size; i++) {
+            editor.putString("email" + i, emails.get(i));
+        }
+        editor.apply();
+    }
+
     public double getDonationAmountPref() {
         return Double.longBitsToDouble(sharedPreferences.getLong("donationAmount", Double.doubleToLongBits(1)));
     }
@@ -82,6 +104,24 @@ public class PreferencesLayer {
 
     public String getKey() {
         return sharedPreferences.getString("id", "");
+    }
+
+    public ArrayList<String> getPhoneNumbers() {
+        ArrayList<String> phoneNumbers = new ArrayList<>();
+        int size = sharedPreferences.getInt("phoneNumbersCount", 0);
+        for (int i = 0; i < size; i++) {
+            phoneNumbers.add(sharedPreferences.getString("email" + i, ""));
+        }
+        return phoneNumbers;
+    }
+
+    public ArrayList<String> getEmails() {
+        ArrayList<String> emails = new ArrayList<>();
+        int size = sharedPreferences.getInt("emailsCount", 0);
+        for (int i = 0; i < size; i++) {
+            emails.add(sharedPreferences.getString("phoneNumber" + i, ""));
+        }
+        return emails;
     }
 
 }
