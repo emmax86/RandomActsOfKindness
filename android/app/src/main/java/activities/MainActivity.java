@@ -1,4 +1,4 @@
-package me.dstny.activities;
+package activities;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import adapters.MainActivityPageAdapter;
 import fragments.Home;
+import me.dstny.activities.R;
 
 public class MainActivity extends Activity {
 

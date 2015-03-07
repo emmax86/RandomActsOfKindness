@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name="me.dstny.activities.SplashScreen"
+            android:name="activities.SplashScreen"
             android:label="Splashscreen"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name="me.dstny.activities.MainActivity"
+            android:name="activities.MainActivity"
             android:label="Main Activity" >
         </activity>
     </application>

@@ -1,10 +1,12 @@
-package me.dstny.activities;
+package activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
+
+import me.dstny.activities.R;
 
 public class SplashScreen extends Activity {
 
