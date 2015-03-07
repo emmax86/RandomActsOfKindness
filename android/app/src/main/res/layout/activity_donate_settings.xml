@@ -35,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="5.67"
             android:textColor="@color/offwhite"
             android:textSize="40sp"
             android:textStyle="bold"/>
@@ -60,10 +59,10 @@
         android:id="@+id/donation_input">
 
         <EditText
+            android:id="@+id/donation_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColorHint="@color/offwhite"
-            android:hint="5.67"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="40sp"
@@ -72,6 +71,16 @@
             android:background="@drawable/edit_text_white"
             android:layout_centerInParent="true"
             android:textColor="@color/offwhite"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="$"
+            android:textColor="@color/offwhite"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/donation_edit_text"/>
 
     </RelativeLayout>
 
@@ -90,6 +99,12 @@
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:onClick="confirmDonationAmountPressed"/>
 
     </RelativeLayout>
 

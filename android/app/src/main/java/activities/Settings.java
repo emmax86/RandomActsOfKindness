@@ -29,6 +29,12 @@ public class Settings extends Activity {
         finish();
     }
 
+    public void onBackPressed() {
+        Intent intent = new Intent(Settings.this, MainActivity.class );
+        startActivity(intent);
+        finish();
+    }
+
     /*
     public void confirmButtonPressed(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);
