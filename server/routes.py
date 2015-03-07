@@ -1,6 +1,6 @@
-from __init__ import app
+from __init__ import app, db
 from subprocess import call
-
+from models import User
 """
 """
 
@@ -34,11 +34,12 @@ def create_object():
 def register():
     if not request.json or not 'guid' in request.json:
         abort(400) # Malformed Packet
-
-    hashedGUID = hashGUID(request.json['guid']);
+    guid = request.json['guid']
+    user = User(guid)
+    db.session.commit()
 
     registerObject = {
-    'id': hashedGUID
+    'id': user.guid
     }
 
     # Do something with registerObject here
@@ -46,13 +47,6 @@ def register():
     return jsonify(registerObject), 201
 
 import hashlib
-
-def hashGUID(guid):
-    hash = hashlib.sha256()
-    hash.update(guid)
-    hash.update("chips")
-    return hash.hexdigest()
-
 
 @app.route('/phone', methods=['POST'])
 def phone():
