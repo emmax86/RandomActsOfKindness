@@ -41,10 +41,13 @@ def phone():
     seconds = request.json['call-time']
     user.add_phone_seconds(seconds)
 
-    incClick()
+    d = Data.query.all().first()
+    d.incrementButtonClicks()
+    db.session.add(d)
 
-    db.session.add(user)
-    db.session.commit()
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incCall()
+    db.session.add(a)
 
     return "", 200
 
@@ -63,6 +66,10 @@ def msg_to():
     d = Data.query.all().first()
     d.incrementButtonClicks()
     db.session.add(d)
+
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incMessage()
+    db.session.add(a)
 
     db.session.add(user)
     db.session.commit()
@@ -85,6 +92,10 @@ def donate():
     d.incDonate()
     db.session.add(d)
 
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incDonate()
+    db.session.add(a)
+
     db.session.add(user)
     db.session.commit()
 
@@ -105,6 +116,10 @@ def mail():
     d = Data.query.first()
     d.incMail()
     db.session.add(d)
+
+    a = User.query.filter_by(id=request.json["id"]).first()
+    a.incMail()
+    db.session.add(a)
 
     db.session.add(user)
     db.session.commit()
