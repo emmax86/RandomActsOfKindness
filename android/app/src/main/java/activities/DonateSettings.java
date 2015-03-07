@@ -17,11 +17,6 @@ public class DonateSettings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_settings);
         donateAmount = (TextView) findViewById(R.id.current_donation_number);
-
-
-
-
-
     }
 
     public void donateBackButtonPressed(View view) {
