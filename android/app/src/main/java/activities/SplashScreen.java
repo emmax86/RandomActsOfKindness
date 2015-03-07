@@ -1,11 +1,14 @@
 package activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 
+import data.PreferencesLayer;
 import me.dstny.activities.R;
 
 public class SplashScreen extends Activity {
@@ -26,6 +29,13 @@ public class SplashScreen extends Activity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
+
+        PreferencesLayer.initialize(getSharedPreferences("prefs", Context.MODE_PRIVATE));
+        String id = PreferencesLayer.getInstance().getKey();
+        if (id.equals("")) {
+            id = "burgle";
+            PreferencesLayer.getInstance().setKey(id);
+        }
     }
 
 

@@ -69,7 +69,7 @@ public class PreferencesLayer {
         return sharedPreferences.getBoolean("mail", true);
     }
 
-    public String getKey(String key) {
+    public String getKey() {
         return sharedPreferences.getString("id", "");
     }
 
