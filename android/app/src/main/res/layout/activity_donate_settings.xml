@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/pink"
+        android:layout_alignParentTop="true"
+        android:id="@+id/donation_amount">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="DONATION AMOUNT"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/offwhite"
+        android:layout_below="@+id/donation_amount"
+        android:id="@+id/current_num">
+
+        <TextView
+            android:id="@+id/current_donation_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="$5.67"
+            android:textColor="@color/orange"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:background="@color/lightblue"
+            android:layout_below="@+id/current_num"
+            android:id="@+id/donation_input">
+
+
+
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="@color/darkblue"
+        android:layout_below="@+id/donation_input"
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="CHANGE AMOUNT"
+            android:textColor="@color/offwhite"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/back"
+        android:onClick="donateBackButtonPressed"/>
+
+</RelativeLayout>

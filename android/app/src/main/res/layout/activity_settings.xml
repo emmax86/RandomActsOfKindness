@@ -47,6 +47,13 @@
         android:id="@+id/donation_layout"
         android:layout_below="@+id/email_layout">
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:onClick="done"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -23,6 +23,11 @@ public class Settings extends Activity {
         startActivity(intent);
         finish();
     }
+    public void donateAmountButtonPressed(View view) {
+        Intent intent = new Intent(Settings.this, donateSetting.class );
+        startActivity(intent);
+        finish();
+    }
 
     /*
     public void confirmButtonPressed(View view) {
