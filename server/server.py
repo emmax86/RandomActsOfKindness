@@ -55,6 +55,19 @@ def hashGUID(guid):
     hash.update("chips")
     return hash.hexdigest()
 
+
+@app.route('/phone', methods=['POST'])
+def phone():
+    if not request.json or (not ('call-time' in request.json)) or (not ('id' in request.json)):
+        abort(400) # Malformed Packet
+
+    if not True: #Check database for id to make sure it exists
+        abort(401)
+
+    # TODO Add calltime to the user that matches the id
+
+    return "", 201
+
 """
 """
 
