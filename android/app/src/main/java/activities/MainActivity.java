@@ -101,14 +101,15 @@ public class MainActivity extends Activity {
         PreferencesLayer.getInstance().setMailPref(mailButton.isActivated());
     }
 
-    public int randomInt(){
+    public int randomInt() {
 
-        int min=0;
-        int max=listOfButtonText.length-1;
-        Random random=new Random();
-        int randomNum=random.nextInt(((max - min) + 1) + min);
+        int min = 0;
+        int max = listOfButtonText.length - 1;
+        Random random = new Random();
+        int randomNum = random.nextInt(((max - min) + 1) + min);
 
         return randomNum;
+    }
 
 
     public void settingsButtonPressed(View view) {
@@ -116,5 +117,5 @@ public class MainActivity extends Activity {
         startActivity(intent);
         finish();
     }
-    
+
 }
