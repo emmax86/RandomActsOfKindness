@@ -8,124 +8,146 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:layout_height="fill_parent">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_height="250dp"
             android:background="@color/pink"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@color/orange"/>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@color/lightblue"/>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_height="250dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/darkblue"/>
 
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp">
-
-        <RelativeLayout
+        <layout.SquareRelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/offwhite"/>
+            android:layout_centerInParent="true">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_centerVertical="true"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textSize="34dp"
-                        android:text="Thank you"
-                        android:textColor="@color/pink"/>
-
-                </RelativeLayout>
+                    android:layout_weight="1"
+                    android:background="@color/pink"/>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textSize="34dp"
-                        android:text="For"
-                        android:textColor="@color/orange"/>
-
-                </RelativeLayout>
+                    android:layout_weight="1"
+                    android:background="@color/orange"/>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textSize="34dp"
-                        android:text="Making a"
-                        android:textColor="@color/lightblue"/>
-
-                </RelativeLayout>
+                    android:layout_weight="1"
+                    android:background="@color/lightblue"/>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textSize="34dp"
-                        android:text="Difference"
-                        android:textColor="@color/darkblue"/>
-
-                </RelativeLayout>
+                    android:layout_weight="1"
+                    android:background="@color/darkblue"/>
 
             </LinearLayout>
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
-    <ImageView
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_centerInParent="true"
-        android:background="@mipmap/line_divider"/>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/offwhite"/>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="34dp"
+                                android:text="THANK YOU"
+                                android:textStyle="bold"
+                                android:textColor="@color/pink"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="34dp"
+                                android:text="FOR"
+                                android:textStyle="bold"
+                                android:textColor="@color/orange"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="34dp"
+                                android:text="MAKING A"
+                                android:textStyle="bold"
+                                android:textColor="@color/lightblue"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="34dp"
+                                android:text="DIFFERENCE"
+                                android:textStyle="bold"
+                                android:textColor="@color/darkblue"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+            </RelativeLayout>
+
+        </layout.SquareRelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

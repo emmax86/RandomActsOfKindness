@@ -56,11 +56,13 @@ public class DonateSettings extends Activity {
     }
 
     public void updateDonationFields() {
-        PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
-        preferencesLayer.setDonationAmountPref(Double.parseDouble(newDonateAmount.getText().toString()));
-        donateAmount.setText(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
-        newDonateAmount.setText(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
-        newDonateAmount.setHint(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
+        if(!newDonateAmount.getText().equals("")) {
+            PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
+            preferencesLayer.setDonationAmountPref(Double.parseDouble(newDonateAmount.getText().toString()));
+            donateAmount.setText(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
+            newDonateAmount.setText(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
+            newDonateAmount.setHint(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
+        }
     }
 
     public void onBackPressed() {

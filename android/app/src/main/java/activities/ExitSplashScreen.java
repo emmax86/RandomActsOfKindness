@@ -10,7 +10,7 @@ import me.dstny.activities.R;
 
 
 public class ExitSplashScreen extends Activity {
-   private final int SPLASH_TIME_OUT=1250;
+   private final int SPLASH_TIME_OUT=2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
