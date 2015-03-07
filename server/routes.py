@@ -1,7 +1,6 @@
 from __init__ import app, db
 from subprocess import call
 from models import User
-from datetime import timedelta
 
 from flask import request
 from flask import abort
