@@ -11,16 +11,21 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import adapters.ListAdapter;
 import data.PreferencesLayer;
 import me.dstny.activities.R;
 import util.Util;
 
 
+
 public class PhoneNumbers extends Activity {
 
     private ListView listView;
     private ListAdapter listAdapter;
+   public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,8 @@ public class PhoneNumbers extends Activity {
         listAdapter = new ListAdapter(this, Util.phoneNumbers);
         listView.setAdapter(listAdapter);
     }
+
+
 
     public void phoneNumbersBackButtonPressed(View view) {
         Intent intent=new Intent(PhoneNumbers.this,Settings.class);
@@ -54,6 +61,8 @@ public class PhoneNumbers extends Activity {
                         String phoneNumber = input.getText().toString();
                         if (Util.phoneNumbers.contains(phoneNumber)) {
                             Toast.makeText(PhoneNumbers.this, "Already added phone number", Toast.LENGTH_SHORT).show();
+                        } else if(phoneNumber.length()!=10) {
+                            Toast.makeText(PhoneNumbers.this, "Invalid phone number", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Util.phoneNumbers.add(phoneNumber);
@@ -61,6 +70,7 @@ public class PhoneNumbers extends Activity {
                             listAdapter.notifyDataSetChanged();
                             listView.invalidateViews();
                         }
+
                     }
                 });
 
@@ -78,4 +88,8 @@ public class PhoneNumbers extends Activity {
         startActivity(intent);
         finish();
     }
+
+
+
+
 }

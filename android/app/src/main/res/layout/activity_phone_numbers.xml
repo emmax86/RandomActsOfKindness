@@ -36,7 +36,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:background="@mipmap/add_orange"
+                android:background="@mipmap/add_offwhite"
                 android:onClick="phoneNumberAddPressed"/>
 
         </layout.SquareRelativeLayout>

@@ -56,6 +56,8 @@ public class EmailAddresses extends Activity {
                         String email = input.getText().toString();
                         if (Util.emails.contains(email)) {
                             Toast.makeText(EmailAddresses.this, "Already added email", Toast.LENGTH_SHORT).show();
+                        } else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")) {
+                            Toast.makeText(EmailAddresses.this, "Invalid Email", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Util.emails.add(email);
