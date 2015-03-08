@@ -40,11 +40,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/transparent">
 
-        <com.echo.holographlibrary.BarGraph
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/graph"/>
-
     </layout.SquareRelativeLayout>
 
 </RelativeLayout>
