@@ -70,6 +70,4 @@ public class GlobalInfo extends Fragment {
 
         return view;
     }
-
-
 }
