@@ -107,7 +107,6 @@ public class MainActivity extends Activity {
         donateButton.setActivated(preferencesLayer.getDonatePref());
         mailButton.setActivated(preferencesLayer.getMailPref());
 
-        new GetStatsTask().execute();
     }
 
     public void kindnessButtonPressed(View view) {
