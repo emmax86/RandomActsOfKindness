@@ -21,6 +21,8 @@ public class ConnectionHandler {
     private static final String msgURL = baseURL + "msg_to";
     private static final String donateURL = baseURL + "donate";
     private static final String mailURL = baseURL + "mail";
+    private static final String registerURL = baseURL + "register";
+    private static final String checkUserStats = baseURL + "user_click_data";
 
     private static HttpURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
         int count = 0;
@@ -68,7 +70,7 @@ public class ConnectionHandler {
 
     private static String buildResponse(HttpURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode >= 400) {
+        if (responseCode == 200 || responseCode == 201 || responseCode >= 400) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
@@ -119,6 +121,22 @@ public class ConnectionHandler {
         jsonObject.put("id", id);
 
         HttpURLConnection connection = buildPostRequest(mailURL, jsonObject.toString());
+        return buildResponse(connection);
+    }
+
+    public static String register(String guid) throws IOException, JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("guid", guid);
+
+        HttpURLConnection connection = buildPostRequest(registerURL, jsonObject.toString());
+        return buildResponse(connection);
+    }
+
+    public static String getUserStats(String id) throws IOException, JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+
+        HttpURLConnection connection = buildPostRequest(checkUserStats, jsonObject.toString());
         return buildResponse(connection);
     }
 

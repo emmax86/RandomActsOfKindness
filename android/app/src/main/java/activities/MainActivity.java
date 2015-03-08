@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -15,6 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,6 +29,7 @@ import fragments.GlobalInfo;
 import fragments.Home;
 import fragments.UserInfo;
 import me.dstny.activities.R;
+import networking.ConnectionHandler;
 
 public class MainActivity extends Activity {
 
@@ -240,4 +246,34 @@ public class MainActivity extends Activity {
             finish();
         }
     }
+
+    private class GetStatsTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            String id = PreferencesLayer.getInstance().getKey();
+            try {
+                String response = ConnectionHandler.getUserStats(id);
+                if (response.startsWith("200:")) {
+                    response = response.replace("200:", "");
+                    JSONObject jsonObject = new JSONObject(response);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException | JSONException e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (!result) {
+
+            }
+        }
+
+    }
+
 }
