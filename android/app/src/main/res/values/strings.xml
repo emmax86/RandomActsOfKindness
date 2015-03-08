@@ -14,4 +14,13 @@
         <item>You are a beautiful human being!</item>
         <item>Awesome Possum!</item>
     </string-array>
+
+    <string-array name="twitter_names">
+        <item>nfegard</item>
+        <item>dontbeabhik</item>
+        <item>Ervian0</item>
+        <item>wiebelswobble</item>
+        <item>aleck_zeng</item>
+        <item>lalaleav</item>
+    </string-array>
 </resources>

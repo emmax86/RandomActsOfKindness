@@ -8,19 +8,15 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +91,6 @@ public class MainActivity extends Activity {
         }
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
     }
 
     public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
@@ -183,15 +178,29 @@ public class MainActivity extends Activity {
 
     public void randomPost() {
         Toast.makeText(this, "random post selected", Toast.LENGTH_SHORT).show();
+        String tag = "@";
+        String[] people = getResources().getStringArray(R.array.twitter_names);
+        String person = people[randomInt(people.length)];
+        String[] messages = getResources().getStringArray(R.array.twitter);
+        String message = " " + messages[randomInt(messages.length)];
+        String post = tag + person + message;
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text(post);
+        builder.show();
     }
 
     public void randomDonate() {
-        Toast.makeText(this, "random donate selected", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "NYI", Toast.LENGTH_SHORT).show();
     }
 
     public void randomMail() {
         if(Util.emails.size()>0) {
-            //send an email
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto", Util.emails.get(randomInt(Util.emails.size())), null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Greeting card");
+            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+                    "Email Body");
+            startActivity(Intent.createChooser(emailIntent, "Send greeting card"));
         }
         else {
             AlertDialog.Builder builder = new   AlertDialog.Builder(MainActivity.this);
