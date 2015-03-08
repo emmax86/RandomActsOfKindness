@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/kindness_button"
-            android:text="Act!"
+            android:text="Make somebody's day!"
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/pink"
@@ -56,7 +56,8 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:text="27"
                 android:textColor="@color/offwhite"
                 android:textSize="16dp"
@@ -75,7 +76,8 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:text="27"
                 android:textColor="@color/offwhite"
                 android:textSize="16dp"
@@ -94,14 +96,15 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:text="27"
                 android:textColor="@color/offwhite"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/donate_count"
-                android:background="@mipmap/d_blue_circle_filled"/>
+                android:background="@mipmap/orange_circle_filled"/>
 
         </layout.SquareRelativeLayout>
 
@@ -113,14 +116,15 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:text="27"
                 android:textColor="@color/offwhite"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/mail_count"
-                android:background="@mipmap/l_blue_circle_filled"/>
+                android:background="@mipmap/pink_circle_filled"/>
 
         </layout.SquareRelativeLayout>
 
