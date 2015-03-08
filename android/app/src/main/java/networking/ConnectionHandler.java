@@ -22,6 +22,7 @@ public class ConnectionHandler {
     private static final String donateURL = baseURL + "donate";
     private static final String mailURL = baseURL + "mail";
     private static final String registerURL = baseURL + "register";
+    private static final String checkUserStats = baseURL + "user_click_data";
 
     private static HttpURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
         int count = 0;
@@ -128,6 +129,14 @@ public class ConnectionHandler {
         jsonObject.put("guid", guid);
 
         HttpURLConnection connection = buildPostRequest(registerURL, jsonObject.toString());
+        return buildResponse(connection);
+    }
+
+    public static String getUserStats(String id) throws IOException, JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+
+        HttpURLConnection connection = buildPostRequest(checkUserStats, jsonObject.toString());
         return buildResponse(connection);
     }
 
