@@ -4,27 +4,14 @@
     android:layout_height="match_parent"
     android:paddingTop="0dp">
 
-    <Space
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="15dp"
-        android:id="@+id/top_space"/>
-
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/top_space"
-        android:background="@mipmap/settings_icon"
-        android:onClick="settingsButtonPressed"/>
-
-    <layout.SquareRelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="215dp"
         android:layout_alignParentTop="true">
 
         <Button
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:background="@drawable/hands_selector"
             android:layout_centerInParent="true"
             android:id="@+id/kindness_button"
@@ -35,108 +22,21 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/kindness_button"
-            android:text="Make somebody's day!"
+            android:paddingTop="10dp"
+            android:text="MAKE SOMEBODY'S DAY!"
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/pink"
             android:id="@+id/act"/>
 
-    </layout.SquareRelativeLayout>
+        <RelativeLayout
+            android:layout_width="310dp"
+            android:layout_height="1dp"
+            android:background="@color/orange"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_buttons">
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:text="27"
-                android:textColor="@color/offwhite"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:id="@+id/call_count"
-                android:background="@mipmap/orange_circle_filled"/>
-
-        </layout.SquareRelativeLayout>
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:text="27"
-                android:textColor="@color/offwhite"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:id="@+id/post_count"
-                android:background="@mipmap/orange_circle_filled"/>
-
-        </layout.SquareRelativeLayout>
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:text="27"
-                android:textColor="@color/offwhite"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:id="@+id/donate_count"
-                android:background="@mipmap/orange_circle_filled"/>
-
-        </layout.SquareRelativeLayout>
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:text="27"
-                android:textColor="@color/offwhite"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:id="@+id/mail_count"
-                android:background="@mipmap/orange_circle_filled"/>
-
-        </layout.SquareRelativeLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:id="@+id/stat_button"
-        android:background="@color/transparent"
-        android:onClick="statButtonPressed"
-        android:layout_above="@+id/bottom_buttons"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"

@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail, TextView cstats, TextView pstats, TextView dstats, TextView mstats) {
+    public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
 
         actButton = act;
         callButton = call;
@@ -101,37 +101,11 @@ public class MainActivity extends Activity {
         donateButton = donate;
         mailButton = mail;
 
-        callStats = cstats;
-        callStats.setText("0");
-        socialStats = pstats;
-        socialStats.setText("0");
-        donateStats = dstats;
-        donateStats.setText("0");
-        mailStats = mstats;
-        mailStats.setText("0");
-
         PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
         callButton.setActivated(preferencesLayer.getCallPref());
         postButton.setActivated(preferencesLayer.getPostPref());
         donateButton.setActivated(preferencesLayer.getDonatePref());
         mailButton.setActivated(preferencesLayer.getMailPref());
-
-        if(callButton.isActivated()) {
-            callStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            callStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        if(postButton.isActivated()) {
-            socialStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            socialStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        if(donateButton.isActivated()) {
-            donateStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            donateStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        if(mailButton.isActivated()) {
-            mailStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            mailStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
 
         new GetStatsTask().execute();
     }
@@ -196,53 +170,21 @@ public class MainActivity extends Activity {
     public void callButtonPressed(View view) {
         callButton.setActivated(!callButton.isActivated());
         PreferencesLayer.getInstance().setCallPref(callButton.isActivated());
-        if(callButton.isActivated()) {
-            callStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            callStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        else {
-            callStats.setBackgroundResource(R.mipmap.orange_circle_filled);
-            callStats.setTextColor(getResources().getColor(R.color.offwhite));
-        }
     }
 
     public void postButtonPressed(View view) {
         postButton.setActivated(!postButton.isActivated());
         PreferencesLayer.getInstance().setPostPref(postButton.isActivated());
-        if(postButton.isActivated()) {
-            socialStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            socialStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        else {
-            socialStats.setBackgroundResource(R.mipmap.orange_circle_filled);
-            socialStats.setTextColor(getResources().getColor(R.color.offwhite));
-        }
     }
 
     public void donateButtonPressed(View view) {
         donateButton.setActivated(!donateButton.isActivated());
         PreferencesLayer.getInstance().setDonatePref(donateButton.isActivated());
-        if(donateButton.isActivated()) {
-            donateStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            donateStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        else {
-            donateStats.setBackgroundResource(R.mipmap.orange_circle_filled);
-            donateStats.setTextColor(getResources().getColor(R.color.offwhite));
-        }
     }
 
     public void mailButtonPressed(View view) {
         mailButton.setActivated(!mailButton.isActivated());
         PreferencesLayer.getInstance().setMailPref(mailButton.isActivated());
-        if(mailButton.isActivated()) {
-            mailStats.setBackgroundResource(R.mipmap.l_blue_circle);
-            mailStats.setTextColor(getResources().getColor(R.color.lightblue));
-        }
-        else {
-            mailStats.setBackgroundResource(R.mipmap.orange_circle_filled);
-            mailStats.setTextColor(getResources().getColor(R.color.offwhite));
-        }
     }
 
     public void settingsButtonPressed(View view) {
@@ -250,11 +192,6 @@ public class MainActivity extends Activity {
         startActivity(intent);
         finish();
     }
-
-    public void statButtonPressed(View view) {
-
-    }
-
 
     public void onBackPressed() {
         if(viewPager.getCurrentItem()==0) {
