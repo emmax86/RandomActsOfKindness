@@ -56,7 +56,7 @@ public class DonateSettings extends Activity {
     }
 
     public void updateDonationFields() {
-        if(!newDonateAmount.getText().equals("")) {
+        if(!newDonateAmount.getText().toString().equals("")) {
             PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
             preferencesLayer.setDonationAmountPref(Double.parseDouble(newDonateAmount.getText().toString()));
             donateAmount.setText(String.valueOf(df.format(preferencesLayer.getDonationAmountPref())));
