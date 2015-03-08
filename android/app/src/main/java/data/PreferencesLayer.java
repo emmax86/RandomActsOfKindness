@@ -110,7 +110,7 @@ public class PreferencesLayer {
         ArrayList<String> phoneNumbers = new ArrayList<>();
         int size = sharedPreferences.getInt("phoneNumbersCount", 0);
         for (int i = 0; i < size; i++) {
-            phoneNumbers.add(sharedPreferences.getString("email" + String.valueOf(i), ""));
+            phoneNumbers.add(sharedPreferences.getString("phoneNumber" + String.valueOf(i), ""));
         }
         return phoneNumbers;
     }
@@ -119,7 +119,7 @@ public class PreferencesLayer {
         ArrayList<String> emails = new ArrayList<>();
         int size = sharedPreferences.getInt("emailsCount", 0);
         for (int i = 0; i < size; i++) {
-            emails.add(sharedPreferences.getString("phoneNumber" + String.valueOf(i), ""));
+            emails.add(sharedPreferences.getString("email" + String.valueOf(i), ""));
         }
         return emails;
     }
