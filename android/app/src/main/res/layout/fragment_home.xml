@@ -10,8 +10,8 @@
         android:id="@+id/top_space"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/top_space"
         android:background="@mipmap/settings_icon"
@@ -35,61 +35,35 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/kindness_button"
-            android:text="Make Someone's Day"
+            android:text="Act!"
             android:textStyle="bold"
             android:textSize="25sp"
-            android:textColor="@color/pink"/>
+            android:textColor="@color/pink"
+            android:id="@+id/act"/>
 
     </layout.SquareRelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_buttons"
-        >
+        android:layout_above="@+id/bottom_buttons">
 
         <layout.SquareRelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_centerInParent="true"
-               android:id="@+id/call_count"/>
 
-
-
-        </layout.SquareRelativeLayout>
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:id="@+id/social_count"/>
-
-
-
-
-        </layout.SquareRelativeLayout>
-
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/donate_count"/>
-
-
-
+                android:text="27"
+                android:textColor="@color/offwhite"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/call_count"
+                android:background="@mipmap/orange_circle_filled"/>
 
         </layout.SquareRelativeLayout>
 
@@ -97,23 +71,68 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_centerInParent="true"
-                android:id="@+id/mail_count"/>
-
-
+                android:text="27"
+                android:textColor="@color/offwhite"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/post_count"
+                android:background="@mipmap/pink_circle_filled"/>
 
         </layout.SquareRelativeLayout>
-        <Button
+
+        <layout.SquareRelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/stat_button"
-            android:background="@color/transparent"
-            android:onClick="statButtonPressed"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:text="27"
+                android:textColor="@color/offwhite"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/donate_count"
+                android:background="@mipmap/d_blue_circle_filled"/>
+
+        </layout.SquareRelativeLayout>
+
+        <layout.SquareRelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:text="27"
+                android:textColor="@color/offwhite"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/mail_count"
+                android:background="@mipmap/l_blue_circle_filled"/>
+
+        </layout.SquareRelativeLayout>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/stat_button"
+        android:background="@color/transparent"
+        android:onClick="statButtonPressed"
+        android:layout_above="@+id/bottom_buttons"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -183,5 +202,11 @@
         </layout.SquareRelativeLayout>
         
     </LinearLayout>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_space"/>
 
 </RelativeLayout>
