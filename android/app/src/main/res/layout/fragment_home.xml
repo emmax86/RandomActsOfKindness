@@ -41,8 +41,51 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/second_buttons"
+        android:layout_above="@+id/bottom_buttons"
+        android:paddingRight="25dp"
+        android:paddingLeft="25dp">
+
+    <layout.SquareRelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/call_selector"
+            android:id="@+id/call_button"
+            android:onClick="callButtonPressed"/>
+
+    </layout.SquareRelativeLayout>
+
+    <layout.SquareRelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/post_selector"
+            android:id="@+id/post_button"
+            android:onClick="postButtonPressed"/>
+
+    </layout.SquareRelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/bottom_buttons">
+        android:id="@+id/bottom_buttons"
+        android:paddingRight="25dp"
+        android:paddingLeft="25dp"
+        android:paddingBottom="25dp">
 
         <layout.SquareRelativeLayout
             android:layout_width="fill_parent"
@@ -50,39 +93,8 @@
             android:layout_weight="1">
 
             <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/call_selector"
-                android:id="@+id/call_button"
-                android:onClick="callButtonPressed"/>
-
-        </layout.SquareRelativeLayout>
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/post_selector"
-                android:id="@+id/post_button"
-                android:onClick="postButtonPressed"/>
-
-        </layout.SquareRelativeLayout>
-
-
-        <layout.SquareRelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/donate_selector"
                 android:id="@+id/donate_button"
@@ -96,8 +108,8 @@
             android:layout_weight="1">
 
             <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/mail_selector"
                 android:id="@+id/mail_button"
