@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail, TextView cstats, TextView pstats, TextView dstats, TextView mstats) {
+    public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
 
         actButton = act;
         callButton = call;
