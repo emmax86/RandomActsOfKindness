@@ -80,7 +80,7 @@ def donate():
 
     userData = User.query.filter_by(id=request.json['id']).first()
 
-    if not user: #Check database for id to make sure it exists
+    if not userData: #Check database for id to make sure it exists
         abort(401)
 
     userData.add_donation(request.json['donated'])
