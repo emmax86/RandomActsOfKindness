@@ -40,10 +40,10 @@
         android:layout_alignParentBottom="true"
         android:background="@color/transparent">
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart"
+        <com.echo.holographlibrary.BarGraph
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/graph"/>
 
 
 
