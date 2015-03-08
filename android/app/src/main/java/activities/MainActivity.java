@@ -91,6 +91,8 @@ public class MainActivity extends Activity {
         }
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        new GetStatsTask().execute();
     }
 
     public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
@@ -152,6 +154,7 @@ public class MainActivity extends Activity {
         if(Util.phoneNumbers.size()>0) {
             Intent callIntent = new Intent(Intent.ACTION_DIAL);
             callIntent.setData(Uri.parse("tel:" + Util.phoneNumbers.get(randomInt(Util.phoneNumbers.size()))));
+            new UpdatePhone().execute();
             startActivity(callIntent);
         }
         else {
@@ -187,6 +190,7 @@ public class MainActivity extends Activity {
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
                 .text(post);
         builder.show();
+        new UpdateMessages().execute();
     }
 
     public void randomDonate() {
@@ -200,6 +204,7 @@ public class MainActivity extends Activity {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Greeting card");
             emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
                     "Email Body");
+            new UpdateMail().execute();
             startActivity(Intent.createChooser(emailIntent, "Send greeting card"));
         }
         else {
@@ -301,7 +306,20 @@ public class MainActivity extends Activity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return true;
+            String id = PreferencesLayer.getInstance().getKey();
+            try {
+                String response = ConnectionHandler.addMinutes(id, 0);
+                if (response.startsWith("200:")) {
+                    Util.phoneCalls++;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
@@ -315,7 +333,20 @@ public class MainActivity extends Activity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return true;
+            String id = PreferencesLayer.getInstance().getKey();
+            try {
+                String response = ConnectionHandler.incrementMsg(id);
+                if (response.startsWith("200:")) {
+                    Util.messages++;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
@@ -329,7 +360,20 @@ public class MainActivity extends Activity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return true;
+            String id = PreferencesLayer.getInstance().getKey();
+            try {
+                String response = ConnectionHandler.addDonation(id, 0);
+                if (response.startsWith("200:")) {
+                    Util.donations++;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
@@ -343,7 +387,20 @@ public class MainActivity extends Activity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return true;
+            String id = PreferencesLayer.getInstance().getKey();
+            try {
+                String response = ConnectionHandler.incrementMsg(id);
+                if (response.startsWith("200:")) {
+                    Util.ecards++;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
