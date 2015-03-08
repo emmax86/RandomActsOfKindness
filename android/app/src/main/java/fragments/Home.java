@@ -21,7 +21,7 @@ public class Home extends Fragment{
         Button postButton = (Button) view.findViewById(R.id.post_button);
         Button donateButton = (Button) view.findViewById(R.id.donate_button);
         Button mailButton = (Button) view.findViewById(R.id.mail_button);
-        ((MainActivity) getActivity()).assembleButtons(actButton, callButton, postButton, donateButton,mailButton);
+        ((MainActivity) getActivity()).assembleButtons(actButton, callButton, postButton, donateButton, mailButton);
         return view;
     }
 
