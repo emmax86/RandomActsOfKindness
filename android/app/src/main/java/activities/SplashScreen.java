@@ -33,11 +33,11 @@ public class SplashScreen extends Activity {
 
         PreferencesLayer.initialize(getSharedPreferences("prefs", Context.MODE_PRIVATE));
         String id = PreferencesLayer.getInstance().getKey();
+        Util.phoneNumbers = PreferencesLayer.getInstance().getPhoneNumbers();
+        Util.emails = PreferencesLayer.getInstance().getEmails();
         if (id.equals("")) {
             id = "burgle";
             PreferencesLayer.getInstance().setKey(id);
-            Util.phoneNumbers = PreferencesLayer.getInstance().getPhoneNumbers();
-            Util.emails = PreferencesLayer.getInstance().getEmails();
         }
     }
 

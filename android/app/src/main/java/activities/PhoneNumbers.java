@@ -6,19 +6,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import data.PreferencesLayer;
 import me.dstny.activities.R;
 import util.Util;
 
 
 public class PhoneNumbers extends Activity {
 
+    private ListView listView;
+    private ArrayAdapter listAdapter;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_numbers);
+        listView = (ListView) findViewById(R.id.listViewOfPhoneNumbers);
+        listAdapter = new ArrayAdapter<>(this, R.id.list_item, R.id.item_label, Util.phoneNumbers);
     }
 
     public void phoneNumbersBackButtonPressed(View view) {
@@ -44,11 +53,15 @@ public class PhoneNumbers extends Activity {
                         // code that checks to see if the email is valid or used by another account
                         // if it passes checks make it the new email and close alert dialog
                         String phoneNumber = input.getText().toString();
-                        if (Util.emails.contains(phoneNumber)) {
+                        if (Util.phoneNumbers.contains(phoneNumber)) {
                             Toast.makeText(PhoneNumbers.this, "Already added phone number", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Util.emails.add(phoneNumber);
+                            Util.phoneNumbers.add(phoneNumber);
+                            PreferencesLayer.getInstance().setPhoneNumbers(Util.phoneNumbers);
+                            listAdapter.add(phoneNumber);
+                            listAdapter.notifyDataSetChanged();
+                            listView.invalidateViews();
                         }
 
                     }

@@ -7,19 +7,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import data.PreferencesLayer;
 import me.dstny.activities.R;
 import util.Util;
 
 public class EmailAddresses extends Activity {
 
+    private ListView listView;
+    private ArrayAdapter listAdapter;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emails_setting);
+        listView = (ListView) findViewById(R.id.listViewOfPhoneNumbers);
+        listAdapter = new ArrayAdapter<>(this, R.id.list_item, R.id.item_label, Util.emails);
     }
 
     public void emailBackButtonPressed(View view) {
@@ -49,6 +57,10 @@ public class EmailAddresses extends Activity {
                         }
                         else {
                             Util.emails.add(email);
+                            PreferencesLayer.getInstance().setPhoneNumbers(Util.emails);
+                            listAdapter.add(email);
+                            listAdapter.notifyDataSetChanged();
+                            listView.invalidateViews();
                         }
 
                     }
