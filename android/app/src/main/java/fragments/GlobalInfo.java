@@ -32,10 +32,10 @@ public class GlobalInfo extends Fragment {
 
         // Add to the chart
         ArrayList<String> xVals = new ArrayList<String>();
-        xVals.add("x1");
-        xVals.add("x2");
-        xVals.add("x3");
-        xVals.add("x4");
+        xVals.add("GLOBAL STATS");
+        xVals.add("GLOBAL ST2");
+        xVals.add("GLOBAL ST3");
+        xVals.add("GLOBAL ST4");
 
         ArrayList<BarEntry> vals1 = new ArrayList<BarEntry>();
         vals1.add(new BarEntry(5,0));
@@ -46,14 +46,24 @@ public class GlobalInfo extends Fragment {
         ArrayList<BarEntry> vals4 = new ArrayList<BarEntry>();
         vals4.add(new BarEntry(7,0));
 
-        ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
-        dataSets.add(new BarDataSet(vals1,xVals.get(0)));
-        dataSets.add(new BarDataSet(vals2,xVals.get(1)));
-        dataSets.add(new BarDataSet(vals3,xVals.get(2)));
-        dataSets.add(new BarDataSet(vals4,xVals.get(3)));
+        ArrayList<BarDataSet> dataSets1 = new ArrayList<BarDataSet>();
+        dataSets1.add(new BarDataSet(vals1,"SOMETHING"));
+        ArrayList<BarDataSet> dataSets2 = new ArrayList<BarDataSet>();
+        dataSets2.add(new BarDataSet(vals2,"SOEMTHING2"));
+        ArrayList<BarDataSet> dataSets3 = new ArrayList<BarDataSet>();
+        dataSets3.add(new BarDataSet(vals3,"SOEMTHING3"));
+        ArrayList<BarDataSet> dataSets4 = new ArrayList<BarDataSet>();
+        dataSets4.add(new BarDataSet(vals4,"SOEMTHING4"));
 
-        BarData data = new BarData(xVals, dataSets);
-        chart.setData(data);
+        BarData data1 = new BarData(xVals, dataSets1);
+        BarData data2 = new BarData(xVals, dataSets2);
+        BarData data3 = new BarData(xVals, dataSets3);
+        BarData data4 = new BarData(xVals, dataSets4);
+
+        chart.setData(data1);
+        chart.setData(data2);
+        chart.setData(data3);
+        chart.setData(data4);
         //https://github.com/PhilJay/MPAndroidChart/wiki/Setting-Data
 
         chart.invalidate();
