@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarEntry;
+
+import java.util.ArrayList;
 
 import me.dstny.activities.R;
 
@@ -22,6 +25,19 @@ public class GlobalInfo extends Fragment {
 
         // Get Global Data
         // Add to the chart
+        ArrayList<String> xVals = new ArrayList<String>();
+        xVals.add("x1");
+        xVals.add("x2");
+        xVals.add("x3");
+        xVals.add("x4");
+
+        ArrayList<BarEntry> vals = new ArrayList<BarEntry>();
+        vals.add(new BarEntry(5,0));
+        vals.add(new BarEntry(3,0));
+        vals.add(new BarEntry(6,0));
+        vals.add(new BarEntry(7,0));
+
+        //https://github.com/PhilJay/MPAndroidChart/wiki/Setting-Data
 
         chart.invalidate();
 
