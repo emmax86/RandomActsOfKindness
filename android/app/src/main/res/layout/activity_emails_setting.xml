@@ -10,6 +10,12 @@
         android:background="@color/pink"
         android:id="@+id/emailTitle">
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/offwhite"
+            android:layout_alignParentBottom="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,12 +47,8 @@
         android:id="@+id/listViewsOfEmails"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
         android:divider="@color/transparent"
-        android:paddingLeft="2dp"
         android:layout_above="@+id/email_back_button_container"
         android:layout_below="@+id/emailTitle">
     </ListView>
@@ -56,11 +58,6 @@
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/email_back_button_container">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/darkblue"/>
 
         <Button
             android:layout_width="45dp"

@@ -3,11 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:background="@color/pink"
         android:id="@+id/phoneNumberTitle">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/offwhite"
+            android:layout_alignParentBottom="true"/>
 
         <TextView
             android:layout_width="wrap_content"

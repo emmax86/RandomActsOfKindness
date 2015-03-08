@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import adapters.ListAdapter;
 import data.PreferencesLayer;
 import me.dstny.activities.R;
 import util.Util;
@@ -21,13 +22,13 @@ import util.Util;
 public class EmailAddresses extends Activity {
 
     private ListView listView;
-    private ArrayAdapter listAdapter;
+    private ListAdapter listAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emails_setting);
         listView = (ListView) findViewById(R.id.listViewsOfEmails);
-        listAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item_label, Util.emails);
+        listAdapter = new ListAdapter(this, Util.emails);
         listView.setAdapter(listAdapter);
     }
 
@@ -59,13 +60,10 @@ public class EmailAddresses extends Activity {
                         else {
                             Util.emails.add(email);
                             PreferencesLayer.getInstance().setEmails(Util.emails);
-                            listAdapter.add(email);
                             listAdapter.notifyDataSetChanged();
                             listView.invalidateViews();
                         }
-
                     }
-
                 });
 
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",

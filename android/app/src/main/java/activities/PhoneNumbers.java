@@ -6,14 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import adapters.ListAdapter;
 import data.PreferencesLayer;
 import me.dstny.activities.R;
 import util.Util;
@@ -28,7 +26,7 @@ public class PhoneNumbers extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_numbers);
         listView = (ListView) findViewById(R.id.listViewOfPhoneNumbers);
-        listAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item_label, Util.phoneNumbers);
+        listAdapter = new ListAdapter(this, Util.phoneNumbers);
         listView.setAdapter(listAdapter);
     }
 
@@ -36,7 +34,6 @@ public class PhoneNumbers extends Activity {
         Intent intent=new Intent(PhoneNumbers.this,Settings.class);
         startActivity(intent);
         finish();
-
     }
 
     public void phoneNumberAddPressed(View view) {
@@ -61,12 +58,10 @@ public class PhoneNumbers extends Activity {
                         else {
                             Util.phoneNumbers.add(phoneNumber);
                             PreferencesLayer.getInstance().setPhoneNumbers(Util.phoneNumbers);
-
+                            listAdapter.notifyDataSetChanged();
                             listView.invalidateViews();
                         }
-
                     }
-
                 });
 
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",

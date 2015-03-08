@@ -21,13 +21,11 @@ public class ListAdapter extends BaseAdapter {
     private ArrayList<String> list;
     private LayoutInflater layoutInflater;
     private Context context;
-    private Activity activity;
 
-    public ListAdapter(Context context, ArrayList<String> list, Activity activity) {
+    public ListAdapter(Context context, ArrayList<String> list) {
         this.context = context;
         this.list = list;
-        layoutInflater = LayoutInflater.from(context);
-        this.activity = activity;
+        layoutInflater = LayoutInflater.from(this.context);
     }
 
     @Override
@@ -52,10 +50,9 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        ViewHolder holder = new ViewHolder();
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item, parent);
-            holder = new ViewHolder();
+            convertView = layoutInflater.inflate(R.layout.list_item, parent,false);
             convertView.setTag(holder);
         }
         else {
