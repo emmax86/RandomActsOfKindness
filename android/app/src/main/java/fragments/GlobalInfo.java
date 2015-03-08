@@ -37,14 +37,20 @@ public class GlobalInfo extends Fragment {
         xVals.add("x3");
         xVals.add("x4");
 
-        ArrayList<BarEntry> vals = new ArrayList<BarEntry>();
-        vals.add(new BarEntry(5,0));
-        vals.add(new BarEntry(3,0));
-        vals.add(new BarEntry(6,0));
-        vals.add(new BarEntry(7,0));
+        ArrayList<BarEntry> vals1 = new ArrayList<BarEntry>();
+        vals1.add(new BarEntry(5,0));
+        ArrayList<BarEntry> vals2 = new ArrayList<BarEntry>();
+        vals2.add(new BarEntry(3,0));
+        ArrayList<BarEntry> vals3 = new ArrayList<BarEntry>();
+        vals3.add(new BarEntry(6,0));
+        ArrayList<BarEntry> vals4 = new ArrayList<BarEntry>();
+        vals4.add(new BarEntry(7,0));
 
         ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
-        dataSets.add(new BarDataSet(vals,xVals.get(0)));
+        dataSets.add(new BarDataSet(vals1,xVals.get(0)));
+        dataSets.add(new BarDataSet(vals2,xVals.get(1)));
+        dataSets.add(new BarDataSet(vals3,xVals.get(2)));
+        dataSets.add(new BarDataSet(vals4,xVals.get(3)));
 
         BarData data = new BarData(xVals, dataSets);
         chart.setData(data);
