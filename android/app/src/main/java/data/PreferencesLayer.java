@@ -3,6 +3,8 @@ package data;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PreferencesLayer {
 
@@ -63,22 +65,16 @@ public class PreferencesLayer {
     }
 
     public void setPhoneNumbers(ArrayList<String> phoneNumbers) {
-        int size = phoneNumbers.size();
+        Set<String> set = new HashSet<>(phoneNumbers);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("phoneNumbersCount", size);
-        for (int i = 0; i < size; i++) {
-            editor.putString("phoneNumber" + String.valueOf(i), phoneNumbers.get(i));
-        }
+        editor.putStringSet("phoneNumbers", set);
         editor.apply();
     }
 
     public void setEmails(ArrayList<String> emails) {
-        int size = emails.size();
+        Set<String> set = new HashSet<>(emails);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("emailsCount", size);
-        for (int i = 0; i < size; i++) {
-            editor.putString("email" + String.valueOf(i), emails.get(i));
-        }
+        editor.putStringSet("emails", set);
         editor.apply();
     }
 
@@ -107,20 +103,12 @@ public class PreferencesLayer {
     }
 
     public ArrayList<String> getPhoneNumbers() {
-        ArrayList<String> phoneNumbers = new ArrayList<>();
-        int size = sharedPreferences.getInt("phoneNumbersCount", 0);
-        for (int i = 0; i < size; i++) {
-            phoneNumbers.add(sharedPreferences.getString("phoneNumber" + String.valueOf(i), ""));
-        }
-        return phoneNumbers;
+        Set<String> set = sharedPreferences.getStringSet("phoneNumbers", new HashSet<String>());
+        return new ArrayList<>(set);
     }
 
     public ArrayList<String> getEmails() {
-        ArrayList<String> emails = new ArrayList<>();
-        int size = sharedPreferences.getInt("emailsCount", 0);
-        for (int i = 0; i < size; i++) {
-            emails.add(sharedPreferences.getString("email" + String.valueOf(i), ""));
-        }
-        return emails;
+        Set<String> set = sharedPreferences.getStringSet("emails", new HashSet<String>());
+        return new ArrayList<>(set);
     }
 }
