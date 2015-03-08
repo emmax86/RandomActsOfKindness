@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="FAMILY + FRIENDS"
+            android:text="PHONE NUMBERS"
             android:textColor="@color/offwhite"
             android:textSize="25sp"
             android:textStyle="bold"/>

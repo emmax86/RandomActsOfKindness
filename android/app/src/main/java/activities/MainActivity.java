@@ -1,9 +1,11 @@
 package activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -11,9 +13,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,12 +55,6 @@ public class MainActivity extends Activity {
     private Button postButton;
     private Button donateButton;
     private Button mailButton;
-
-    private TextView callStats;
-    private TextView socialStats;
-    private TextView donateStats;
-    private TextView mailStats;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,9 +154,31 @@ public class MainActivity extends Activity {
     }
 
     public void randomCall() {
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse("tel:" + Util.phoneNumbers.get(randomInt(Util.phoneNumbers.size()))));
-        startActivity(callIntent);
+        if(Util.phoneNumbers.size()>0) {
+            Intent callIntent = new Intent(Intent.ACTION_DIAL);
+            callIntent.setData(Uri.parse("tel:" + Util.phoneNumbers.get(randomInt(Util.phoneNumbers.size()))));
+            startActivity(callIntent);
+        }
+        else {
+            AlertDialog.Builder builder = new   AlertDialog.Builder(MainActivity.this);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.setMessage("We noticed that you do not have any phone numbers entered. Would you like to add some?");
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Confirm",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int whichButton) {
+                            Intent intent = new Intent(MainActivity.this, PhoneNumbers.class );
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    });
+            alertDialog.show();
+        }
     }
 
     public void randomPost() {
@@ -170,7 +190,29 @@ public class MainActivity extends Activity {
     }
 
     public void randomMail() {
-        Toast.makeText(this, "random mail selected", Toast.LENGTH_SHORT).show();
+        if(Util.emails.size()>0) {
+            //send an email
+        }
+        else {
+            AlertDialog.Builder builder = new   AlertDialog.Builder(MainActivity.this);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.setMessage("We noticed that you do not have any emails entered. Would you like to add some?");
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Confirm",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int whichButton) {
+                            Intent intent = new Intent(MainActivity.this, EmailAddresses.class );
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    });
+            alertDialog.show();
+        }
     }
 
     public void callButtonPressed(View view) {
@@ -241,10 +283,7 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                callStats.setText(Util.phoneCalls + "");
-                socialStats.setText(Util.messages + "");
-                donateStats.setText(Util.donations + "");
-                mailStats.setText(Util.ecards + "");
+
             }
         }
     }
