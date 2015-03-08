@@ -64,7 +64,16 @@ public class GlobalInfo extends Fragment {
         chart.setData(data2);
         chart.setData(data3);
         chart.setData(data4);
+
         //https://github.com/PhilJay/MPAndroidChart/wiki/Setting-Data
+
+        chart.setTouchEnabled(false);
+        chart.setDragEnabled(false);
+        chart.setScaleEnabled(false);
+        chart.setPinchZoom(false);
+        chart.setHighlightEnabled(false);
+        chart.setHighlightIndicatorEnabled(false);
+
 
         chart.invalidate();
 
