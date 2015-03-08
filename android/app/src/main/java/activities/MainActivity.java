@@ -19,7 +19,9 @@ import java.util.Random;
 
 import adapters.MainActivityPageAdapter;
 import data.PreferencesLayer;
+import fragments.GlobalInfo;
 import fragments.Home;
+import fragments.UserInfo;
 import me.dstny.activities.R;
 
 public class MainActivity extends Activity {
@@ -29,7 +31,10 @@ public class MainActivity extends Activity {
     private FragmentTransaction ft;
     private ViewPager viewPager;
     private MainActivityPageAdapter mainActivityPageAdapter;
+
+    private UserInfo userInfo;
     private Home homeFragment;
+    private GlobalInfo globalInfo;
 
     private Button actButton;
     private Button callButton;
@@ -48,9 +53,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userInfo = new UserInfo();
         homeFragment = new Home();
+        globalInfo = new GlobalInfo();
         fragments = new ArrayList<Fragment>();
+        fragments.add(userInfo);
         fragments.add(homeFragment);
+        fragments.add(globalInfo);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         fm = getFragmentManager();
         mainActivityPageAdapter = new MainActivityPageAdapter(fm, fragments);
@@ -69,7 +78,7 @@ public class MainActivity extends Activity {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-        viewPager.setCurrentItem(0);
+        viewPager.setCurrentItem(1);
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
@@ -125,9 +134,16 @@ public class MainActivity extends Activity {
 
 
     public void onBackPressed() {
-        Intent intent = new Intent(MainActivity.this, ExitSplashScreen.class);
-        startActivity(intent);
-        finish();
-
+        if(viewPager.getCurrentItem()==0) {
+            viewPager.setCurrentItem(1);
+        }
+        else if(viewPager.getCurrentItem()==2) {
+            viewPager.setCurrentItem(1);
+        }
+        else {
+            Intent intent = new Intent(MainActivity.this, ExitSplashScreen.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
