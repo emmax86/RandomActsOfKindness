@@ -8,19 +8,15 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +91,6 @@ public class MainActivity extends Activity {
         }
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
     }
 
     public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
@@ -183,6 +178,12 @@ public class MainActivity extends Activity {
 
     public void randomPost() {
         Toast.makeText(this, "random post selected", Toast.LENGTH_SHORT).show();
+        String tag = "@";
+        String person = "nfegard"; // get person name from list
+        String post = tag + person + " Hackathons are rad";
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text(post);
+        builder.show();
     }
 
     public void randomDonate() {
