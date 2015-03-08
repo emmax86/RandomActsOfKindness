@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,13 +22,14 @@ import util.Util;
 public class PhoneNumbers extends Activity {
 
     private ListView listView;
-    private ArrayAdapter listAdapter;
+    private ListAdapter listAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_numbers);
         listView = (ListView) findViewById(R.id.listViewOfPhoneNumbers);
-        listAdapter = new ArrayAdapter<>(this, R.id.list_item, R.id.item_label, Util.phoneNumbers);
+        listAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item_label, Util.phoneNumbers);
+        listView.setAdapter(listAdapter);
     }
 
     public void phoneNumbersBackButtonPressed(View view) {
@@ -59,8 +61,7 @@ public class PhoneNumbers extends Activity {
                         else {
                             Util.phoneNumbers.add(phoneNumber);
                             PreferencesLayer.getInstance().setPhoneNumbers(Util.phoneNumbers);
-                            listAdapter.add(phoneNumber);
-                            listAdapter.notifyDataSetChanged();
+
                             listView.invalidateViews();
                         }
 

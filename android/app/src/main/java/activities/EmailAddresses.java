@@ -27,7 +27,7 @@ public class EmailAddresses extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emails_setting);
         listView = (ListView) findViewById(R.id.listViewsOfEmails);
-        listAdapter = new ArrayAdapter<>(this, R.id.list_item, R.id.item_label, Util.emails);
+        listAdapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.item_label, Util.emails);
         listView.setAdapter(listAdapter);
     }
 
