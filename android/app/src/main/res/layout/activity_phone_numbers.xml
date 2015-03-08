@@ -45,7 +45,7 @@
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent"
-        android:divider="#CCCCCC"
+        android:divider="@color/transparent"
         android:dividerHeight="1dp"
         android:paddingLeft="2dp"
         android:layout_above="@+id/back_button_container"

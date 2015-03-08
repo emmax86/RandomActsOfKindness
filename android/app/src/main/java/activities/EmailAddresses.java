@@ -26,8 +26,9 @@ public class EmailAddresses extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emails_setting);
-        listView = (ListView) findViewById(R.id.listViewOfPhoneNumbers);
+        listView = (ListView) findViewById(R.id.listViewsOfEmails);
         listAdapter = new ArrayAdapter<>(this, R.id.list_item, R.id.item_label, Util.emails);
+        listView.setAdapter(listAdapter);
     }
 
     public void emailBackButtonPressed(View view) {
@@ -57,7 +58,7 @@ public class EmailAddresses extends Activity {
                         }
                         else {
                             Util.emails.add(email);
-                            PreferencesLayer.getInstance().setPhoneNumbers(Util.emails);
+                            PreferencesLayer.getInstance().setEmails(Util.emails);
                             listAdapter.add(email);
                             listAdapter.notifyDataSetChanged();
                             listView.invalidateViews();
