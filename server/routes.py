@@ -30,48 +30,45 @@ def register():
 
 @app.route('/phone', methods=['POST'])
 def phone():
-    if not request.json or (not ('call-time' in request.json)) or (not ('id' in request.json)):
+    if not request.json or (not ("call-time" in request.json)) or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
-    user = User.query.filter_by(id=request.json["id"]).first()
+    matchingUser = User.query.filter_by(id=request.json['id']).first()
 
-    if not user: #Check database for id to make sure it exists
+    if not matchingUser: #Check database for id to make sure it exists
         abort(401)
 
-    seconds = request.json['call-time']
-    user.add_phone_seconds(seconds)
+    secondsElapsed = request.json['call-time']
+    matchingUser.add_phone_seconds(secondsElapsed)
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
-    db.session.add(d)
+    globalData = Data.query.all().first()
+    globalData.incrementButtonClicks()
+    db.session.add(globalData)
 
-    a = User.query.filter_by(id=request.json["id"]).first()
-    a.incCall()
-    db.session.add(a)
+    userData = User.query.filter_by(id=request.json['id']).first()
+    userData.incCall()
+    db.session.add(userData)
 
     return "", 200
 
 @app.route('/msg_to', methods=['POST'])
 def msg_to():
-    if not request.json or (not ('phone_number' in request.json)) or (not ('id' in request.json)):
+    if not request.json or (not ("phone_number" in request.json)) or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
-    user = User.query.filter_by(id=request.json["id"]).first()
+    userData = User.query.filter_by(id=request.json['id']).first()
 
-    if not user: #Check database for id to make sure it exists
+    if not userData: #Check database for id to make sure it exists
         abort(401)
 
-    user.increment_messages()
+    globalData = Data.query.all().first()
+    globalData.incrementButtonClicks()
+    db.session.add(globalData)
 
-    d = Data.query.all().first()
-    d.incrementButtonClicks()
-    db.session.add(d)
+    userData.incMessage()
+    db.session.add(userData)
+    db.session.add(userData)
 
-    a = User.query.filter_by(id=request.json["id"]).first()
-    a.incMessage()
-    db.session.add(a)
-
-    db.session.add(user)
     db.session.commit()
 
     return "", 200
@@ -81,22 +78,21 @@ def donate():
     if not request.json or (not ('donated' in request.json)) or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
-    user = User.query.filter_by(id=request.json["id"]).first()
+    userData = User.query.filter_by(id=request.json['id']).first()
 
     if not user: #Check database for id to make sure it exists
         abort(401)
 
-    user.add_donation(request.json['donated'])
+    userData.add_donation(request.json['donated'])
 
-    d = Data.query.first()
-    d.incDonate()
-    db.session.add(d)
+    globalData = Data.query.first()
+    globalData.incDonate()
+    db.session.add(globalData)
 
-    a = User.query.filter_by(id=request.json["id"]).first()
-    a.incDonate()
-    db.session.add(a)
+    userData.incDonate()
+    db.session.add(userData)
 
-    db.session.add(user)
+    db.session.add(userData)
     db.session.commit()
 
     return "", 200
@@ -106,34 +102,31 @@ def mail():
     if not request.json or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
-    user = User.query.filter_by(id=request.json["id"]).first()
+    userData = User.query.filter_by(id=request.json['id']).first()
 
-    if not user: #Check database for id to make sure it exists
+    if not userData: #Check database for id to make sure it exists
         abort(401)
 
-    user.increment_mail()
+    globalData = Data.query.first()
+    globalData.incMail()
+    db.session.add(globalData)
 
-    d = Data.query.first()
-    d.incMail()
-    db.session.add(d)
+    userData.incMail()
+    db.session.add(userData)
 
-    a = User.query.filter_by(id=request.json["id"]).first()
-    a.incMail()
-    db.session.add(a)
-
-    db.session.add(user)
+    db.session.add(userData)
     db.session.commit()
 
     return "", 200
 
 @app.route('/click_data', methods=['GET'])
 def clickData():
-    d = Data.query.first()
-    donate = d.getDonate()
-    call = d.getCall()
-    message = d.getMessage()
-    mail = d.getMail()
-    return jsonify(call=call,post=message,donate=donate,mail=mail), 200
+    globalData = Data.query.first()
+    donate = globalData.getDonate()
+    call = globalData.getCall()
+    message = globalData.getMessage()
+    mail = globalData.getMail()
+    return jsonify(call=call, post=message, donate=donate, mail=mail), 200
 
 @app.route('/user_click_data', methods=['POST'])
 def user_click_data():
@@ -141,15 +134,15 @@ def user_click_data():
     if not request.json or (not ('id' in request.json)):
         abort(400) # Malformed Packet
 
-    d = User.query.filter_by(id=request.json["id"]).first()
-    if not d:
+    userData = User.query.filter_by(id=request.json['id']).first()
+    if not userData:
         abort(401)
 
-    id = d.getID()
-    donate = d.getDonate()
-    call = d.getCall()
-    message = d.getMessage()
-    mail = d.getMail()
+    id = userData.getID()
+    donate = userData.getDonate()
+    call = userData.getCall()
+    message = userData.getMessage()
+    mail = userData.getMail()
 
     return jsonify(id=id, call=call, post=message, donate=donate, mail=mail), 200
 
@@ -159,7 +152,7 @@ def get_data():
 
 @app.route('/')
 def landing_page():
-    return 'Nothing seems to be here'
+    return 'Nothing seems to be here. Chips!'
 
 @app.route('/update-server', methods=['GET', 'POST'])
 def update():
