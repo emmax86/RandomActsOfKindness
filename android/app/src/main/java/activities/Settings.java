@@ -20,6 +20,7 @@ public class Settings extends Activity {
 
     public void settingsBackButtonPressed(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);
+        intent.putExtra("key",true);
         startActivity(intent);
         finish();
     }
@@ -41,6 +42,7 @@ public class Settings extends Activity {
 
     public void onBackPressed() {
         Intent intent = new Intent(Settings.this, MainActivity.class );
+        intent.putExtra("key",true);
         startActivity(intent);
         finish();
     }
