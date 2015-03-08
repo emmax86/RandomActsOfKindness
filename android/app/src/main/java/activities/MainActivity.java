@@ -86,9 +86,16 @@ public class MainActivity extends Activity {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-        viewPager.setCurrentItem(1);
+        boolean send = getIntent().getBooleanExtra("key",false);
+        if(send) {
+            viewPager.setCurrentItem(0);
+        }
+        else {
+           viewPager.setCurrentItem(1);
+        }
         viewPager.setOffscreenPageLimit(3);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     public void assembleButtons(Button act, Button call, Button post, Button donate, Button mail) {
@@ -105,7 +112,6 @@ public class MainActivity extends Activity {
         donateButton.setActivated(preferencesLayer.getDonatePref());
         mailButton.setActivated(preferencesLayer.getMailPref());
 
-        new GetStatsTask().execute();
     }
 
     public void kindnessButtonPressed(View view) {

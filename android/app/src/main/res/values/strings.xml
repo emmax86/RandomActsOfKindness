@@ -3,4 +3,18 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">325414307655702</string>
+    <string-array name="twitter">
+        <item>Have a great day!:)</item>
+        <item>Keep enjoying life!</item>
+        <item>Never stop being yourself</item>
+        <itme>Keep Ballin'</itme>
+        <item>You are awesome and you know it!</item>
+        <item>Never give up on your dreams</item>
+        <item>You are a beautiful human being!</item>
+        <item>Awesome Possum!</item>
+        
+
+
+    </string-array>
 </resources>
