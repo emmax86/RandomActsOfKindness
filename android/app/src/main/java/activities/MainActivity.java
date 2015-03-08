@@ -190,12 +190,17 @@ public class MainActivity extends Activity {
     }
 
     public void randomDonate() {
-        Toast.makeText(this, "random donate selected", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "NYI", Toast.LENGTH_SHORT).show();
     }
 
     public void randomMail() {
         if(Util.emails.size()>0) {
-            //send an email
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto", Util.emails.get(randomInt(Util.emails.size())), null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Greeting card");
+            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+                    "Email Body");
+            startActivity(Intent.createChooser(emailIntent, "Send greeting card"));
         }
         else {
             AlertDialog.Builder builder = new   AlertDialog.Builder(MainActivity.this);
