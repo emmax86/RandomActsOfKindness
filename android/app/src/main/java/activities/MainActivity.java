@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ import fragments.Home;
 import fragments.UserInfo;
 import me.dstny.activities.R;
 import networking.ConnectionHandler;
+import util.Util;
 
 public class MainActivity extends Activity {
 
@@ -99,9 +101,13 @@ public class MainActivity extends Activity {
         mailButton = mail;
 
         callStats = cstats;
+        callStats.setText("0");
         socialStats = pstats;
+        socialStats.setText("0");
         donateStats = dstats;
+        donateStats.setText("0");
         mailStats = mstats;
+        mailStats.setText("0");
 
         PreferencesLayer preferencesLayer = PreferencesLayer.getInstance();
         callButton.setActivated(preferencesLayer.getCallPref());
@@ -121,6 +127,8 @@ public class MainActivity extends Activity {
         if(mailButton.isActivated()) {
             mailStats.setBackgroundResource(R.mipmap.l_blue_circle_filled);
         }
+
+        new GetStatsTask().execute();
     }
 
     public void kindnessButtonPressed(View view) {
@@ -257,21 +265,84 @@ public class MainActivity extends Activity {
                 if (response.startsWith("200:")) {
                     response = response.replace("200:", "");
                     JSONObject jsonObject = new JSONObject(response);
+                    Util.messages = jsonObject.getInt("post");
+                    Util.phoneCalls = jsonObject.getInt("call");
+                    Util.donations = jsonObject.getInt("donate");
+                    Util.ecards = jsonObject.getInt("mail");
                     return true;
                 }
                 else {
                     return false;
                 }
             } catch (IOException | JSONException e) {
+                e.printStackTrace();
                 return false;
             }
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
-            if (!result) {
-
+            if (result) {
+                callStats.setText(Util.phoneCalls + "");
+                socialStats.setText(Util.messages + "");
+                donateStats.setText(Util.donations + "");
+                mailStats.setText(Util.ecards + "");
             }
+        }
+    }
+
+    private class UpdatePhone extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+
+        }
+
+    }
+
+    private class UpdateMessages extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+
+        }
+
+    }
+
+    private class UpdateDonations extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+
+        }
+
+    }
+
+    private class UpdateMail extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+
         }
 
     }
