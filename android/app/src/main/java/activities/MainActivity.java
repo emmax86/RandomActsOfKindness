@@ -179,8 +179,11 @@ public class MainActivity extends Activity {
     public void randomPost() {
         Toast.makeText(this, "random post selected", Toast.LENGTH_SHORT).show();
         String tag = "@";
-        String person = "nfegard"; // get person name from list
-        String post = tag + person + " Hackathons are rad";
+        String[] people = getResources().getStringArray(R.array.twitter_names);
+        String person = people[randomInt(people.length)];
+        String[] messages = getResources().getStringArray(R.array.twitter);
+        String message = " " + messages[randomInt(messages.length)];
+        String post = tag + person + message;
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
                 .text(post);
         builder.show();
