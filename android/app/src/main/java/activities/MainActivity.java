@@ -202,8 +202,9 @@ public class MainActivity extends Activity {
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                     "mailto", Util.emails.get(randomInt(Util.emails.size())), null));
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Greeting card");
+            String[] array = getResources().getStringArray(R.array.greeting_cards);
             emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-                    "Email Body");
+                    "<img src=\"" + array[randomInt(array.length)] + "\">");
             new UpdateMail().execute();
             startActivity(Intent.createChooser(emailIntent, "Send greeting card"));
         }
