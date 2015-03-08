@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="215dp">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/globe"
+            android:id="@+id/globe"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/globe"
+            android:paddingTop="10dp"
+            android:text="GLOBAL STATISTICS"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/darkblue"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="260dp"
+            android:layout_height="1dp"
+            android:background="@color/lightblue"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <layout.SquareRelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent">
+
+
+
+    </layout.SquareRelativeLayout>
+
+</RelativeLayout>

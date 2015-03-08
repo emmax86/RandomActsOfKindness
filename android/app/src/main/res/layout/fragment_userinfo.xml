@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="15dp"
+        android:id="@+id/top_space"/>
+
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/right_space"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/top_space"
+        android:background="@mipmap/settings_icon"
+        android:onClick="settingsButtonPressed"
+        android:layout_toLeftOf="@+id/right_space"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="215dp">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/me"
+            android:id="@+id/globe"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/globe"
+            android:paddingTop="10dp"
+            android:text="MY STATISTICS"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/orange"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="220dp"
+            android:layout_height="1dp"
+            android:background="@color/pink"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
