@@ -84,7 +84,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/post_count"
-                android:background="@mipmap/pink_circle_filled"/>
+                android:background="@mipmap/orange_circle_filled"/>
 
         </layout.SquareRelativeLayout>
 
@@ -124,7 +124,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/mail_count"
-                android:background="@mipmap/pink_circle_filled"/>
+                android:background="@mipmap/orange_circle_filled"/>
 
         </layout.SquareRelativeLayout>
 
